@@ -3,6 +3,7 @@ name: Helm Chart CI - Scraper Agent
 on:
   pull_request:
     paths:
+    - '.github/workflows/ci-agent-scraper.yml'
     - 'promitor-agent-scraper/**'
 
 jobs:
