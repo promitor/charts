@@ -8,6 +8,7 @@ on:
 
 jobs:
   lint-helm-3-x:
+    name: Lint Helm Chart
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
@@ -20,6 +21,8 @@ jobs:
       run: helm lint promitor-agent-resource-discovery --values examples/promitor-agent-resource-discovery.config.yaml
 
   deploy-helm-3-x:
+    name: Deploy chart to Kind cluster
+    needs: [lint-helm-3-x]
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
@@ -46,4 +49,4 @@ jobs:
       run: helm template promitor-agent-resource-discovery ./promitor-agent-resource-discovery/ --namespace promitor --values examples/promitor-agent-resource-discovery.config.yaml
 
     - name: Install Helm chart
-      run: helm install promitor-agent-resource-discovery ./promitor-agent-resource-discovery/ --namespace promitor promitor-agent-resource-discovery --values examples/promitor-agent-resource-discovery.config.yaml
+      run: helm install promitor-agent-resource-discovery ./promitor-agent-resource-discovery/ --namespace promitor --values examples/promitor-agent-resource-discovery.config.yaml
