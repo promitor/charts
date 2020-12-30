@@ -3,6 +3,7 @@ name: Helm Chart CI - Resource Discovery Agent
 on:
   pull_request:
     paths:
+    - '.github/workflows/ci-agent-resource-discovery.yml'
     - 'promitor-agent-resource-discovery/**'
 
 jobs:
