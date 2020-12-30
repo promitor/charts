@@ -1,0 +1,19 @@
+name: Helm Chart CI - Resource Discovery Agent
+
+on:
+  pull_request:
+    paths:
+    - 'promitor-agent-resource-discovery/**'
+
+jobs:
+  lint-helm-3-x:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Helm install
+      uses: Azure/setup-helm@v1
+
+    - name: Lint Promitor Resource Discovery Helm chart
+      run: helm lint promitor-agent-resource-discovery --values examples/promitor-agent-resource-discovery.config.yaml
