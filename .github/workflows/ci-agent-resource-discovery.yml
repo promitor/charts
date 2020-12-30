@@ -16,4 +16,4 @@ jobs:
       uses: Azure/setup-helm@v1
 
     - name: Lint Promitor Resource Discovery Helm chart
-      run: helm lint promitor-agent-resource-discovery
+      run: helm lint promitor-agent-resource-discovery --values examples/promitor-agent-resource-discovery.config.yaml
