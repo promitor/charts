@@ -1,0 +1,19 @@
+name: Helm Chart CI - Scraper Agent
+
+on:
+  pull_request:
+    paths:
+    - 'promitor-agent-scraper/**'
+
+jobs:
+  lint-helm-3-x:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Helm install
+      uses: Azure/setup-helm@v1
+
+    - name: Lint Promitor Scraper Helm chart
+      run: helm lint promitor-agent-scraper
