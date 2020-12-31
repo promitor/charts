@@ -1,5 +1,7 @@
 # Promitor - Helm Charts
 
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/promitor)](https://artifacthub.io/packages/search?repo=promitor)
+
 Official Helm chart repository for Promitor.
 
 ## Documentation
