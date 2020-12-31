@@ -3,10 +3,11 @@ version: 0.1.0
 appVersion: 0.1.0-rc-2
 type: application
 name: promitor-agent-resource-discovery
-description: Promitor, bringing Azure Monitor metrics where you need them.
+description: Automatically discover Azure resources to be scraped by Promitor Scraper agent.
 home: https://promitor.io
 sources:
   - https://github.com/tomkerkhove/promitor
+  - https://github.com/promitor/charts
 maintainers:
   - name: Tom Kerkhove
     url: https://github.com/tomkerkhove
