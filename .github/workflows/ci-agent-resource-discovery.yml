@@ -54,7 +54,7 @@ jobs:
       run: helm template promitor-agent-resource-discovery ./promitor-agent-resource-discovery/ --values examples/promitor-agent-resource-discovery.config.yaml
 
     - name: Install Helm chart
-      run: helm install promitor-agent-resource-discovery ./promitor-agent-resource-discovery/ --values examples/promitor-agent-resource-discovery.config.yaml
+      run: helm install promitor-agent-resource-discovery ./promitor-agent-resource-discovery/ --values examples/promitor-agent-resource-discovery.config.yaml --wait
 
     - name: Show installed Helm charts
       run: helm ls

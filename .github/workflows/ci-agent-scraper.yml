@@ -54,7 +54,7 @@ jobs:
       run: helm template promitor-agent-scraper ./promitor-agent-scraper/
 
     - name: Install Helm chart
-      run: helm install promitor-agent-scraper ./promitor-agent-scraper/
+      run: helm install promitor-agent-scraper ./promitor-agent-scraper/ --wait
 
     - name: Show installed Helm charts
       run: helm ls
