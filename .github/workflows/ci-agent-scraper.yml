@@ -58,6 +58,8 @@ jobs:
 
     - name: Show installed Helm charts
       run: helm ls
+      if: always()
 
     - name: Show Kubernetes resources
       run: kubectl get all
+      if: always()
