@@ -7,7 +7,7 @@
 ## TL;DR
 
 ```console
-helm repo add promitor https://promitor.azurecr.io/helm/v1/repo
+helm repo add promitor https://charts.promitor.io/
 helm repo update
 helm install promitor-agent-scraper promitor/promitor-agent-scraper
 ```
