@@ -7,7 +7,7 @@
 ## TL;DR
 
 ```console
-helm repo add promitor https://promitor.azurecr.io/helm/v1/repo
+helm repo add promitor https://charts.promitor.io/
 helm repo update
 helm install promitor-agent-resource-discovery promitor/promitor-agent-resource-discovery
 ```
