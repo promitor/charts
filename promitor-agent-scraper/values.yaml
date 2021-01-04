@@ -7,7 +7,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
-  repository: tomkerkhove/promitor-agent-scraper
+  repository: ghcr.io/tomkerkhove/promitor-agent-scraper
   pullPolicy: Always
   tag:
 
