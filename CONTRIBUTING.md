@@ -32,7 +32,7 @@ $ helm repo index docs --url https://charts.promitor.io
 > 
 > ## TL;DR
 > ```shell
-> helm repo add coditeu https://charts.promitor.io/
+> helm repo add promitor https://charts.promitor.io/
 > helm install promitor-agent-resource-discovery promitor/promitor-agent-resource-discovery
 > ```
 > 
