@@ -23,3 +23,33 @@ $ mv promitor-agent-scraper-*.tgz docs
 ```shell
 $ helm repo index docs --url https://charts.promitor.io
 ```
+
+5. Create a pull request with our new Helm index
+6. Create a GitHub release for your new Helm chart version by using the following template
+
+> *Chart: {{Chart Version}} | App: {{App Name}}*
+> {{Description about the Helm chart}}
+> 
+> ## TL;DR
+> ```shell
+> helm repo add promitor https://charts.promitor.io/
+> helm install promitor-agent-resource-discovery promitor/promitor-agent-resource-discovery
+> ```
+> 
+> ## What is new?
+> ### Features
+> 
+> - {{List new features}}
+> 
+> ### Fixes / Changes
+> 
+> - {{List fixes}}
+> 
+> ### Breaking Changes
+> 
+> - {{List breaking changes}}
+> 
+> ### Removal
+> 
+> - {{List removed features}}
+```
