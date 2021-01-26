@@ -9,6 +9,7 @@ fullnameOverride: ""
 image:
   repository: ghcr.io/tomkerkhove/promitor-agent-scraper
   pullPolicy: Always
+  pullSecrets: []
   tag:
 
 azureAuthentication:

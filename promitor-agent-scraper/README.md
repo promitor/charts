@@ -59,6 +59,7 @@ their default values.
 | `image.repository`  | Repository which provides the image | `ghcr.io/tomkerkhove/promitor-agent-scraper` |
 | `image.tag`  | Tag of image to use | None, chart app version is used by default            |
 | `image.pullPolicy`  | Policy to pull image | `Always`            |
+| `image.pullSecrets`  | ImagePullSecrets for the pod | `[]`            |
 | `azureAuthentication.appId`  | Id of the Azure AD entity to authenticate with |             |
 | `azureAuthentication.appKey`  | Secret of the Azure AD entity to authenticate with |             |
 | `resourceDiscovery.enabled`  | Indication whether or not resource discovery is required | `false`            |

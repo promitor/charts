@@ -28,6 +28,10 @@ spec:
       {{- if .Values.rbac.create }}
       serviceAccountName: {{ template "promitor-agent-scraper.serviceaccountname" . }}
       {{- end }}
+      {{- with .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
