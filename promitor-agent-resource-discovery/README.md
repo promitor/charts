@@ -86,6 +86,8 @@ their default values.
 | `health.liveness.verifyDependencies`  | Indication if liveness probes should verify if Promitor can interat with external dependencies. Do note that this will contact all dependencies which can have performance impact, cause throttling or cascading failures when consumed very often. | `false`            |   |
 | `health.liveness.delay`  | Amount of seconds to wait before probing the container to verify if it's still alive | `5`            |   |
 | `health.liveness.interval`  | Amount of seconds to wait before probing the container again to verify if it's still alive after the last attempt | `30`            |   |
+| `nodeSelector` | Node labels for pod assignment | `{}` |
+| `tolerations` | Tolerations for pod assignment | `[]` |
 | `resources`  | Pod resource requests & limits |    `{}`    |
 | `secrets.createSecret`  | Indication if you want to bring your own secret level of logging | `true`            |   |
 | `secrets.appKeySecret`  | Name of the secret for Azure AD identity secret | `azure-app-key`            |
