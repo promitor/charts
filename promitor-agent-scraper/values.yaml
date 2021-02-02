@@ -129,3 +129,6 @@ rbac:
     ## If create is true, a name is generated using the fullname template
     name: promitor-scraper
     annotations: {}
+
+nodeSelector: {}
+tolerations: []

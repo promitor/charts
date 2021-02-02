@@ -108,3 +108,6 @@ rbac:
     ## If create is true, a name is generated using the fullname template
     name: promitor-resource-discovery
     annotations: {}
+
+nodeSelector: {}
+tolerations: []
