@@ -1,5 +1,6 @@
 {{- $resourceDiscoveryGroups := toYaml .Values.resourceDiscoveryGroups -}}
 {{- $subscriptionIds := toYaml .Values.azureLandscape.subscriptionIds -}}
+{{- $subscriptions := toYaml .Values.azureLandscape.subscriptions -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -34,7 +35,12 @@ data:
     azureLandscape:
       tenantId: {{ .Values.azureLandscape.tenantId }}
       subscriptions:
+  {{- if .Values.azureLandscape.subscriptionIds }}
 {{ tpl $subscriptionIds . | indent 6 }}
+  {{- end }}
+  {{- if .Values.azureLandscape.subscriptions }}
+{{ tpl $subscriptions . | indent 6 }}
+  {{- end }}
       cloud: {{ .Values.azureLandscape.cloud }}
     resourceDiscoveryGroups:
 {{ tpl $resourceDiscoveryGroups . | indent 4 }}

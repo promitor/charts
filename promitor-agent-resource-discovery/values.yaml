@@ -32,6 +32,8 @@ telemetry:
 azureLandscape:
   cloud: Global
   tenantId:
+  subscriptions: []
+  # This field is deprecated, use subscriptions instead please
   subscriptionIds: []
 
 resourceDiscoveryGroups: []
