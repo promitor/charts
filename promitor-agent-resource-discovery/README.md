@@ -61,7 +61,7 @@ their default values.
 | `image.pullPolicy`  | Policy to pull image | `Always`            |
 | `azureLandscape.cloud`  | Azure Cloud to discover resources in. Options are `Global` (default), `China`, `UsGov` & `Germany` | `Global`            |
 | `azureLandscape.tenantId`  | Id of Azure tenant to discover resources in |             |
-| `azureLandscape.subscriptionIds`  | List of Azure subscription ids to discover resources in | `[]`            |
+| `azureLandscape.subscriptions`  | List of Azure subscription ids to discover resources in | `[]`            |
 | `resourceDiscoveryGroups`  | List of resource discovery groups to configured following the [resource discovery declaration docs](https://promitor.io/configuration/v2.x/resource-discovery) |        |
 | `azureAuthentication.appId`  | Id of the Azure AD entity to authenticate with |             |
 | `azureAuthentication.appKey`  | Secret of the Azure AD entity to authenticate with |             |
