@@ -74,6 +74,15 @@ their default values.
 | `metricSinks.prometheusScrapingEndpoint.enableMetricTimestamps`  | Indication whether or not to include timestamp | `true`            |
 | `metricSinks.prometheusScrapingEndpoint.metricUnavailableValue`  | Value to report in Prometheus when no metric was found whether or not to include timestamp | `NaN`            |
 | `metricSinks.prometheusScrapingEndpoint.enableServiceDiscovery`  | Indication whether or not service discovery with annotations should be enabled ([docs](https://github.com/helm/charts/tree/master/stable/prometheus#scraping-pod-metrics-via-annotations)) | `true`            |
+| `metricSinks.prometheusOperator.serviceMonitor.enabled`  | Indication whether or not to create a ServiceMonitor object for Prometheus Operator | `false`            |
+| `metricSinks.prometheusOperator.serviceMonitor.namespace`  | The namespace where the ServiceMonitor should be created |                  |
+| `metricSinks.prometheusOperator.serviceMonitor.labels`  | Labels for the ServiceMonitor |       `{}`           |
+| `metricSinks.prometheusOperator.serviceMonitor.interval`  | How often Prometheus should scrape  | `60s`            |
+| `metricSinks.prometheusOperator.serviceMonitor.timeout`  | Timeout for the scraping operation | `10s`            |
+| `metricSinks.prometheusOperator.prometheusRule.enabled`          | Indication whether or not to create prometheusRules for Prometheus operator      | `false`                     |
+| `metricSinks.prometheusOperator.prometheusRule.additionalLabels` | Additional labels that can be used so prometheusRules will be discovered by Prometheus  | `{}`        |
+| `metricSinks.prometheusOperator.prometheusRule.namespace`        | namespace where prometheusRules object should be created          |                             |
+| `metricSinks.prometheusOperator.prometheusRule.rules`            | [rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) to be created | `[]` 
 | `metricSinks.statsd.enabled`  | Indication whether or not metrics should be emitted to a StatsD server | `false`|
 | `metricSinks.statsd.host`  | DNS name or IP address of StatsD server |             |
 | `metricSinks.statsd.port`  | Port (UDP) address of StatsD server | `8125`            |
