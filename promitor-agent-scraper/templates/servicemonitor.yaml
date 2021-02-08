@@ -1,0 +1,33 @@
+{{- if and ( .Values.metricSinks.prometheusOperator.serviceMonitor.enabled ) (.Values.metricSinks.prometheusScrapingEndpoint.enabled ) }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+{{- if .Values.metricSinks.prometheusOperator.serviceMonitor.labels }}
+  labels:
+{{ toYaml .Values.metricSinks.prometheusOperator.serviceMonitor.labels | indent 4 }}
+{{- end }}
+  name: {{ template "promitor-agent-scraper.fullname" . }}
+{{- if .Values.metricSinks.prometheusOperator.serviceMonitor.namespace }}
+  namespace: {{ .Values.metricSinks.prometheusOperator.serviceMonitor.namespace }}
+{{- end }}
+spec:
+  endpoints:
+  - targetPort: http
+{{- if .Values.metricSinks.prometheusOperator.serviceMonitor.interval }}
+    interval: {{ .Values.metricSinks.prometheusOperator.serviceMonitor.interval }}
+{{- end }}
+{{- if .Values.metricSinks.prometheusScrapingEndpoint.baseUriPath }}
+    path: {{ .Values.metricSinks.prometheusScrapingEndpoint.baseUriPath }}
+{{- end }}
+{{- if .Values.metricSinks.prometheusOperator.serviceMonitor.timeout }}
+    scrapeTimeout: {{ .Values.metricSinks.prometheusOperator.serviceMonitor.timeout }}
+{{- end }}
+  jobLabel: {{ template "promitor-agent-scraper.fullname" . }}
+  namespaceSelector:
+    matchNames:
+    - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      app: {{ template "promitor-agent-scraper.name" . }}
+      release: {{ .Release.Name }}
+{{- end }}
