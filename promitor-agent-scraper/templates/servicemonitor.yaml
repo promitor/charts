@@ -1,26 +1,26 @@
-{{- if and ( .Values.metricSinks.prometheusOperator.serviceMonitor.enabled ) (.Values.metricSinks.prometheusScrapingEndpoint.enabled ) }}
+{{- if and ( .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.enabled ) (.Values.metricSinks.prometheusScrapingEndpoint.enabled ) }}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-{{- if .Values.metricSinks.prometheusOperator.serviceMonitor.labels }}
+{{- if .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.labels }}
   labels:
-{{ toYaml .Values.metricSinks.prometheusOperator.serviceMonitor.labels | indent 4 }}
+{{ toYaml .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.labels | indent 4 }}
 {{- end }}
   name: {{ template "promitor-agent-scraper.fullname" . }}
-{{- if .Values.metricSinks.prometheusOperator.serviceMonitor.namespace }}
-  namespace: {{ .Values.metricSinks.prometheusOperator.serviceMonitor.namespace }}
+{{- if .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.namespace }}
+  namespace: {{ .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.namespace }}
 {{- end }}
 spec:
   endpoints:
   - targetPort: http
-{{- if .Values.metricSinks.prometheusOperator.serviceMonitor.interval }}
-    interval: {{ .Values.metricSinks.prometheusOperator.serviceMonitor.interval }}
+{{- if .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.interval }}
+    interval: {{ .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.interval }}
 {{- end }}
 {{- if .Values.metricSinks.prometheusScrapingEndpoint.baseUriPath }}
     path: {{ .Values.metricSinks.prometheusScrapingEndpoint.baseUriPath }}
 {{- end }}
-{{- if .Values.metricSinks.prometheusOperator.serviceMonitor.timeout }}
-    scrapeTimeout: {{ .Values.metricSinks.prometheusOperator.serviceMonitor.timeout }}
+{{- if .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.timeout }}
+    scrapeTimeout: {{ .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.timeout }}
 {{- end }}
   jobLabel: {{ template "promitor-agent-scraper.fullname" . }}
   namespaceSelector:
