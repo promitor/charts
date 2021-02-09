@@ -1,9 +1,9 @@
-{{- if .Values.metricSinks.prometheusOperator.prometheusRule.enabled }}
+{{- if .Values.prometheusRule.enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: {{ template "promitor-agent-scraper" . }}
-{{- with .Values.metricSinks.prometheusOperator.prometheusRule.namespace }}
+{{- with .Values.prometheusRule.namespace }}
   namespace: {{ . }}
 {{- end }}
   labels:
@@ -11,11 +11,11 @@ metadata:
     chart: {{ template "promitor-agent-scraper.chart" . }}
     release: {{ .Release.Name | quote }}
     heritage: {{ .Release.Service | quote }}
-{{- with .Values.metricSinks.prometheusOperator.prometheusRule.additionalLabels }}
+{{- with .Values.prometheusRule.additionalLabels }}
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-{{- with .Values.metricSinks.prometheusOperator.prometheusRule.rules }}
+{{- with .Values.prometheusRule.rules }}
   groups:
     - name: {{ template "promitor-agent-scraper.name" $ }}
       rules: {{ tpl (toYaml .) $ | nindent 8 }}
