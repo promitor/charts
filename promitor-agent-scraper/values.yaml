@@ -29,36 +29,35 @@ metricSinks:
     enableMetricTimestamps: true
     metricUnavailableValue: NaN
     enableServiceDiscovery: true
-  prometheusOperator:
     serviceMonitor:
       enabled: false
       namespace: ""
       labels: {}
       interval: 60s
       timeout: 10s
-    prometheusRule:
-      enabled: false
-      namespace: ""
-      additionalLabels: {}
-      rules: []
-        # Sample rule below. Can also use templated strings with some limitations regarding possible line length: https://github.com/go-yaml/yaml/issues/166
-        # To prevent Helm from messing up the rules on fields > 80 characters you can use yaml literal style as shown below.
-        # - alert: DemoMetricHigh
-        #   expr: |
-        #     my_metric{service="{{ template "promitor_agent_scraper.fullname" . }}"} > 10
-        #   for: 1m
-        #   labels:
-        #     severity: critical
-        #   annotations:
-        #     description: |
-        #       Service {{ template "promitor_agent_scraper.fullname" . }} currently reports {{ "{{ $value }}" }} 
-        #     summary: |
-        #       my_metric value is {{ "{{ $value }}" }}
   statsd:
     enabled: false
     host: ""
     port: 8125
     metricPrefix: ""
+prometheusRule:
+  enabled: false
+  namespace: ""
+  additionalLabels: {}
+  rules: []
+    # Sample rule below. Can also use templated strings with some limitations regarding possible line length: https://github.com/go-yaml/yaml/issues/166
+    # To prevent Helm from messing up the rules on fields > 80 characters you can use yaml literal style as shown below.
+    # - alert: DemoMetricHigh
+    #   expr: |
+    #     my_metric{service="{{ template "promitor_agent_scraper.fullname" . }}"} > 10
+    #   for: 1m
+    #   labels:
+    #     severity: critical
+    #   annotations:
+    #     description: |
+    #       Service {{ template "promitor_agent_scraper.fullname" . }} currently reports {{ "{{ $value }}" }} 
+    #     summary: |
+    #       my_metric value is {{ "{{ $value }}" }}
 resourceDiscovery:
   enabled: false
   host: ""
