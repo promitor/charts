@@ -55,7 +55,7 @@ prometheusRule:
     #     severity: critical
     #   annotations:
     #     description: |
-    #       Service {{ template "promitor_agent_scraper.fullname" . }} currently reports {{ "{{ $value }}" }} 
+    #       Service {{ template "promitor_agent_scraper.fullname" . }} currently reports {{ "{{ $value }}" }}
     #     summary: |
     #       my_metric value is {{ "{{ $value }}" }}
 resourceDiscovery:
