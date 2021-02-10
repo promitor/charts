@@ -74,7 +74,7 @@ their default values.
 | `metricSinks.prometheusScrapingEndpoint.enableMetricTimestamps`  | Indication whether or not to include timestamp | `true`            |
 | `metricSinks.prometheusScrapingEndpoint.metricUnavailableValue`  | Value to report in Prometheus when no metric was found whether or not to include timestamp | `NaN`            |
 | `metricSinks.prometheusScrapingEndpoint.enableServiceDiscovery`  | Indication whether or not service discovery with annotations should be enabled ([docs](https://github.com/helm/charts/tree/master/stable/prometheus#scraping-pod-metrics-via-annotations)) | `true`            |
-| `metricSinks.prometheusScrapingEndpoint.serviceMonitor.enabled`  | Indication whether or not to create a ServiceMonitor object for Prometheus Operator | `false`            |
+| `metricSinks.prometheusScrapingEndpoint.serviceMonitor.enabled`  | Indication whether or not to create a ServiceMonitor object for [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions) | `false`            |
 | `metricSinks.prometheusScrapingEndpoint.serviceMonitor.namespace`  | The namespace where the ServiceMonitor should be created |                  |
 | `metricSinks.prometheusScrapingEndpoint.serviceMonitor.labels`  | Labels for the ServiceMonitor |       `{}`           |
 | `metricSinks.prometheusScrapingEndpoint.serviceMonitor.interval`  | How often Prometheus should scrape  | `60s`            |
@@ -83,7 +83,7 @@ their default values.
 | `metricSinks.statsd.host`  | DNS name or IP address of StatsD server |             |
 | `metricSinks.statsd.port`  | Port (UDP) address of StatsD server | `8125`            |
 | `metricSinks.statsd.metricPrefix`  | Prefix that will be added to every metric defined in the metric declaration |             |
-| `prometheusRule.enabled`          | Indication whether or not to create PrometheusRule object(s) for Prometheus operator      | `false`                     |
+| `prometheusRule.enabled`          | Indication whether or not to create PrometheusRule object(s) for [Prometheus operator](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions)      | `false`                     |
 | `prometheusRule.additionalLabels` | Additional labels that can be used so prometheusRules will be discovered by Prometheus  | `{}`        |
 | `prometheusRule.namespace`        | namespace where prometheusRules object should be created          |                             |
 | `prometheusRule.rules`            | [rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) to be created | `[]` 
