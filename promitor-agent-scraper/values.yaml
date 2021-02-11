@@ -47,17 +47,16 @@ prometheusRule:
   rules: []
     # Sample rule below. Can also use templated strings with some limitations regarding possible line length: https://github.com/go-yaml/yaml/issues/166
     # To prevent Helm from messing up the rules on fields > 80 characters you can use yaml literal style as shown below.
-    # - alert: DemoMetricHigh
-    #   expr: |
-    #     my_metric{service="{{ template "promitor_agent_scraper.fullname" . }}"} > 10
-    #   for: 1m
-    #   labels:
-    #     severity: critical
-    #   annotations:
-    #     description: |
-    #       Service {{ template "promitor_agent_scraper.fullname" . }} currently reports {{ "{{ $value }}" }}
-    #     summary: |
-    #       my_metric value is {{ "{{ $value }}" }}
+    #  - alert: PromitorRemainingArmCalls
+    #    expr: |
+    #      promitor_ratelimit_arm{service="{{ template "promitor-agent-scraper.name" . }}"} < 11999
+    #    for: 5m
+    #    labels:
+    #      severity: warning
+    #    annotations:
+    #      description: |
+    #        Service {{ template "promitor-agent-scraper.name" . }} currently reports {{ "{{ $value }}" }} remaining calls before Azure Resource Manager throttles us.
+    #      summary: Azure Resource Manager may throttle us soon.
 resourceDiscovery:
   enabled: false
   host: ""
