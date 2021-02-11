@@ -19,12 +19,18 @@ spec:
     metadata:
       labels:
         {{- include "promitor-agent-scraper.selectorLabels" . | nindent 8 }}
+      {{- if .Values.podLabels }}
+      {{- toYaml .Values.podLabels | nindent 8 }}
+      {{- end }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         {{- if .Values.secrets.createSecret }}
         checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
         {{- end }}
     spec:
+      {{- if .Values.securityContext.enabled }}
+      securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 8 }}
+      {{- end }}
       {{- if .Values.rbac.create }}
       serviceAccountName: {{ template "promitor-agent-scraper.serviceaccountname" . }}
       {{- end }}
@@ -73,20 +79,32 @@ spec:
             mountPath: /config/
   {{- if .Values.health.liveness.enabled }}
           livenessProbe:
+            failureThreshold: {{ .Values.health.liveness.thresholds.failure }}
             httpGet:
               path: /api/v1/health?includeDependencies={{ .Values.health.liveness.verifyDependencies }}
               port: http
             initialDelaySeconds: {{ .Values.health.liveness.delay }}
             periodSeconds: {{ .Values.health.liveness.interval }}
+            successThreshold: {{ .Values.health.liveness.thresholds.success }}
+            timeoutSeconds: {{ .Values.health.liveness.timeoutSeconds }}
   {{- end }}
   {{- if .Values.health.readiness.enabled }}
           readinessProbe:
+            failureThreshold: {{ .Values.health.readiness.thresholds.failure }}
             httpGet:
               path: /api/v1/health?includeDependencies={{ .Values.health.readiness.verifyDependencies }}
               port: http
             initialDelaySeconds: {{ .Values.health.readiness.delay }}
             periodSeconds: {{ .Values.health.readiness.interval }}
+            successThreshold: {{ .Values.health.readiness.thresholds.success }}
+            timeoutSeconds: {{ .Values.health.readiness.timeoutSeconds }}
   {{- end }}
+      {{- if .Values.priorityClassName }}
+      priorityClassName: {{ .Values.priorityClassName | quote }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity: {{- tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
       volumes:
         - name: config-volume-{{ template "promitor-agent-scraper.name" . }}
           configMap:

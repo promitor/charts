@@ -95,11 +95,25 @@ health:
     verifyDependencies: false
     delay: 5
     interval: 5
+    timeoutSeconds: 1
+    thresholds:
+      failure: 3
+      success: 1
   liveness:
     enabled: true
     verifyDependencies: false
     delay: 5
     interval: 30
+    timeoutSeconds: 1
+    thresholds:
+      failure: 3
+      success: 1
+
+affinity: {}
+
+podLabels: {}
+
+priorityClassName: ""
 
 resources: {}
   # limits:
@@ -131,4 +145,8 @@ rbac:
     annotations: {}
 
 nodeSelector: {}
+
+securityContext:
+  enabled: false
+
 tolerations: []

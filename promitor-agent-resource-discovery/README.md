@@ -82,11 +82,22 @@ their default values.
 | `health.readiness.verifyDependencies`  | Indication if readiness probes should verify if Promitor can interat with external dependencies. Do note that this will contact all dependencies which can have performance impact, cause throttling or cascading failures when consumed very often. | `false`            |   |
 | `health.readiness.delay`  | Amount of seconds to wait before probing the container to verify if it's ready | `5`            |   |
 | `health.readiness.interval`  | Amount of seconds to wait before probing the container again to verify if it's ready after the last attempt | `5`            |   |
+| `health.readiness.thresholds.failure`  | Number of retries after first failed check before container will be marked `Unready`  | `3` |
+| `health.readiness.thresholds.success`  | Minimum consecutive successes for the probe to be considered successful after having failed | `1` |
+| `health.readiness.timeoutSeconds`  | Amount of seconds after which the probe times out | `1`  |
 | `health.liveness.enabled`  | Indication if liveness probes should be used | `true`            |   |
 | `health.liveness.verifyDependencies`  | Indication if liveness probes should verify if Promitor can interat with external dependencies. Do note that this will contact all dependencies which can have performance impact, cause throttling or cascading failures when consumed very often. | `false`            |   |
 | `health.liveness.delay`  | Amount of seconds to wait before probing the container to verify if it's still alive | `5`            |   |
 | `health.liveness.interval`  | Amount of seconds to wait before probing the container again to verify if it's still alive after the last attempt | `30`            |   |
+| `health.liveness.thresholds.failure`  | Number of retries after first failed check before container restart  | `3` |
+| `health.liveness.thresholds.success`  | Minimum consecutive successes for the probe to be considered successful after having failed | `1` |
+| `health.liveness.timeoutSeconds`  | Amount of seconds after which the probe times out | `1`  |
+| `affinity`  | Affinity settings ([docs](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)) |    `{}`    |
 | `nodeSelector` | Node labels for pod assignment | `{}` |
+| `podLabels`  | Additional pod labels to include |    `{}`    |
+| `priorityClassName`  | Priority class to be used by pod ([docs](https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/)) |    `""`    |
+| `securityContext.*`  | Custom security context object for pod ([docs](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)) | `{}`            |
+| `securityContext.enabled`  | Whether to include custom security context for pod or not | `false`            |
 | `tolerations` | Tolerations for pod assignment | `[]` |
 | `resources`  | Pod resource requests & limits |    `{}`    |
 | `secrets.createSecret`  | Indication if you want to bring your own secret level of logging | `true`            |   |
