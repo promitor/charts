@@ -28,6 +28,5 @@ spec:
     - {{ .Release.Namespace }}
   selector:
     matchLabels:
-      app: {{ template "promitor-agent-scraper.name" . }}
-      release: {{ .Release.Name }}
+      {{- include "promitor-agent-scraper.selectorLabels" . | nindent 6 }}
 {{- end }}
