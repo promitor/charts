@@ -15,6 +15,9 @@ image:
 azureAuthentication:
   appId: ""
   appKey: ""
+  managedIdentityId: ""
+  mode: "servicePrincipal"
+  aadpodidbinding: ""
 metricSinks:
   atlassianStatuspage:
     enabled: false
@@ -99,6 +102,7 @@ secrets:
   # To use your own secret, set createSecret to false and define the name/keys that your secret uses
   createSecret: true
   secretName: ""
+  managedIdentityIdSecret: azure-managed-identity-id
   appIdSecret: azure-app-id
   appKeySecret: azure-app-key
   atlassianStatuspageApiKey: atlassian-statuspage-apikey

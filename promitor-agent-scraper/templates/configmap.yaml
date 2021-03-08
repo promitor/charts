@@ -11,6 +11,8 @@ data:
   runtime.yaml: |-
       server:
         httpPort: {{ .Values.service.targetPort | quote }}
+      authentication:
+        mode: {{ .Values.azureAuthentication.mode | default "servicePrincipal"}}
   {{- if .Values.resourceDiscovery.enabled }}
       resourceDiscovery:
         host: {{ .Values.resourceDiscovery.host | quote }}

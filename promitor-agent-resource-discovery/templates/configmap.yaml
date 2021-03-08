@@ -12,6 +12,8 @@ data:
   runtime.yaml: |-
       server:
         httpPort: {{ .Values.service.targetPort | quote }}
+      authentication:
+        mode: {{ .Values.azureAuthentication.mode | default "servicePrincipal"}}
       cache:
         enabled: {{ .Values.cache.enabled | quote }}
         durationInMinutes: {{ .Values.cache.durationInMinutes | quote }}
