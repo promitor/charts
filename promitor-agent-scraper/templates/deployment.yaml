@@ -64,7 +64,7 @@ spec:
               secretKeyRef:
                   name: {{ template "promitor-agent-scraper.secretname" . }}
                   key: {{ .Values.secrets.appKeySecret }}
-  {{- end}}        
+  {{- end}}
   {{- if .Values.metricSinks.atlassianStatuspage.apiKey }}
           - name: PROMITOR_ATLASSIAN_STATUSPAGE_APIKEY
             valueFrom:

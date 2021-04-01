@@ -24,7 +24,7 @@ spec:
       {{- end }}
       {{- if empty .Values.azureAuthentication.identity.binding | not }}
         aadpodidbinding: {{ .Values.azureAuthentication.identity.binding }}
-      {{- end }}      
+      {{- end }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         {{- if .Values.secrets.createSecret }}
@@ -60,7 +60,7 @@ spec:
               secretKeyRef:
                   name: {{ template "promitor-agent-resource-discovery.secretname" . }}
                   key: {{ .Values.secrets.appKeySecret }}
-        {{- end}}        
+        {{- end}}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           volumeMounts:
