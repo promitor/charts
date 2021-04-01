@@ -15,7 +15,7 @@ data:
         mode: {{ .Values.azureAuthentication.mode | default "servicePrincipal"}}
   {{- if .Values.azureAuthentication.identity.id }}
         identityId: {{ .Values.azureAuthentication.identity.id}}
-  {{- end }}        
+  {{- end }}
   {{- if .Values.resourceDiscovery.enabled }}
       resourceDiscovery:
         host: {{ .Values.resourceDiscovery.host | quote }}

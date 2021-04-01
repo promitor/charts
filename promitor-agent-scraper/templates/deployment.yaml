@@ -24,7 +24,7 @@ spec:
       {{- end }}
       {{- if empty .Values.azureAuthentication.identity.binding | not }}
         aadpodidbinding: {{ .Values.azureAuthentication.identity.binding }}
-      {{- end }}      
+      {{- end }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         {{- if .Values.secrets.createSecret }}
