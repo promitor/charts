@@ -30,8 +30,8 @@ To install the chart with the release name `promitor-agent-resource-discovery`:
 
 ```console
 $ helm install promitor-agent-resource-discovery promitor/promitor-agent-resource-discovery \
-               --set azureAuthentication.appId='<azure-ad-app-id>' \
-               --set azureAuthentication.appKey='<azure-ad-app-key>' \
+               --set azureAuthentication.identity.id='<azure-ad-app-id>' \
+               --set azureAuthentication.identity.key='<azure-ad-app-key>' \
                --values /path/to/metric-declaration.yaml
 ```
 
@@ -63,8 +63,10 @@ their default values.
 | `azureLandscape.tenantId`  | Id of Azure tenant to discover resources in |             |
 | `azureLandscape.subscriptions`  | List of Azure subscription ids to discover resources in | `[]`            |
 | `resourceDiscoveryGroups`  | List of resource discovery groups to configured following the [resource discovery declaration docs](https://promitor.io/configuration/v2.x/resource-discovery) |        |
-| `azureAuthentication.appId`  | Id of the Azure AD entity to authenticate with |             |
-| `azureAuthentication.appKey`  | Secret of the Azure AD entity to authenticate with |             |
+| `azureAuthentication.mode`  | Authentication mode option for Azure authentication. Options are `ServicePrincipal` (default), `UserAssignedManagedIdentity` or `SystemAssignedManagedIdentity` |             |
+| `azureAuthentication.identity.id`  | Id of the Azure AD entity to authenticate with |             |
+| `azureAuthentication.identity.key`  | Secret of the Azure AD entity to authenticate with, when using mode `ServicePrincipal` (default) or `UserAssignedManagedIdentity` |             |
+| `azureAuthentication.identity.binding`  | Aad Pod Identity name, when using `UserAssignedManagedIdentity` or `SystemAssignedManagedIdentity` as mode |             |
 | `cache.enabled`  | Indication whether or not discovered resources should be cached in-memory to avoid Azure throttling | `true`            |
 | `cache.durationInMinutes`  | Amount of minutes to cache discovered resources | `5`            |
 | `telemetry.applicationInsights.enabled`  | Indication whether or not to send telemetry to Azure Application Insights | `false`            |
@@ -113,8 +115,8 @@ Specify each parameter using the `--set key=value[,key=value]` argument to
 
 ```console
 $ helm install promitor-agent-resource-discovery promitor/promitor-agent-resource-discovery \
-               --set azureAuthentication.appId='<azure-ad-app-id>' \
-               --set azureAuthentication.appKey='<azure-ad-app-key>' \
+               --set azureAuthentication.identity.id='<azure-ad-app-id>' \
+               --set azureAuthentication.identity.key='<azure-ad-app-key>' \
                --set azureLandscape.tenantId='<azure-tenant-id>' \
                --set azureLandscape.subscriptionId='<azure-subscription-id>' \
                --values C:\Promitor\metric-declaration.yaml

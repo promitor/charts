@@ -22,8 +22,8 @@ spec:
       {{- if .Values.podLabels }}
       {{- toYaml .Values.podLabels | nindent 8 }}
       {{- end }}
-      {{- if empty .Values.azureAuthentication.aadpodidbinding | not }}
-        aadpodidbinding: {{ .Values.azureAuthentication.aadpodidbinding }}
+      {{- if empty .Values.azureAuthentication.identity.binding | not }}
+        aadpodidbinding: {{ .Values.azureAuthentication.identity.binding }}
       {{- end }}      
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
@@ -53,21 +53,8 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
+        {{- if .Values.azureAuthentication.identity.key }}
           env:
-        {{- if contains "managedIdentity" .Values.azureAuthentication.mode }}
-          {{- if empty .Values.azureAuthentication.managedIdentityId | not }} 
-          - name: PROMITOR_AUTH_UAMI
-            valueFrom:
-              secretKeyRef:
-                  name: {{ template "promitor-agent-resource-discovery.secretname" . }}
-                  key: {{ .Values.secrets.managedIdentityIdSecret }}
-          {{- end }}
-        {{- else }}
-          - name: PROMITOR_AUTH_APPID
-            valueFrom:
-              secretKeyRef:
-                  name: {{ template "promitor-agent-resource-discovery.secretname" . }}
-                  key: {{ .Values.secrets.appIdSecret }}
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
               secretKeyRef:

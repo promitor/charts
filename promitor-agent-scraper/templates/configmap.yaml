@@ -13,6 +13,9 @@ data:
         httpPort: {{ .Values.service.targetPort | quote }}
       authentication:
         mode: {{ .Values.azureAuthentication.mode | default "servicePrincipal"}}
+  {{- if .Values.azureAuthentication.identity.id }}
+        identityId: {{ .Values.azureAuthentication.identity.id}}
+  {{- end }}        
   {{- if .Values.resourceDiscovery.enabled }}
       resourceDiscovery:
         host: {{ .Values.resourceDiscovery.host | quote }}

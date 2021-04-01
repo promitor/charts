@@ -30,8 +30,8 @@ To install the chart with the release name `promitor-agent-scraper`:
 
 ```console
 $ helm install promitor-agent-scraper promitor/promitor-agent-scraper \
-               --set azureAuthentication.appId='<azure-ad-app-id>' \
-               --set azureAuthentication.appKey='<azure-ad-app-key>' \
+               --set azureAuthentication.identity.id='<azure-ad-app-id>' \
+               --set azureAuthentication.identity.key='<azure-ad-app-key>' \
                --values /path/to/metric-declaration.yaml
 ```
 
@@ -60,8 +60,10 @@ their default values.
 | `image.tag`  | Tag of image to use | None, chart app version is used by default            |
 | `image.pullPolicy`  | Policy to pull image | `Always`            |
 | `image.pullSecrets`  | ImagePullSecrets for the pod | `[]`            |
-| `azureAuthentication.appId`  | Id of the Azure AD entity to authenticate with |             |
-| `azureAuthentication.appKey`  | Secret of the Azure AD entity to authenticate with |             |
+| `azureAuthentication.mode`  | Authentication type to use to authenticate. Options are `ServicePrincipal` (default), `UserAssignedManagedIdentity` or `SystemAssignedManagedIdentity` |             |
+| `azureAuthentication.identity.id`  | Id of the Azure AD entity to authenticate with |             |
+| `azureAuthentication.identity.key`  | Secret of the Azure AD entity to authenticate with |             |
+| `azureAuthentication.identity.binding`  | Aad Pod Identity name, when using `UserAssignedManagedIdentity` or `SystemAssignedManagedIdentity` as mode |             |
 | `resourceDiscovery.enabled`  | Indication whether or not resource discovery is required | `false`            |
 | `resourceDiscovery.host`  | DNS name or IP address of the Promitor Resource Discovery agent |             |
 | `resourceDiscovery.port`  | Port (UDP) address of the Promitor Resource Discovery agent | `80`            |
@@ -127,7 +129,6 @@ their default values.
 | `tolerations` | Tolerations for pod assignment | `[]` |
 | `resources`  | Pod resource requests & limits |    `{}`    |
 | `secrets.createSecret`  | Indication if you want to bring your own secret level of logging | `true`            |
-| `secrets.appIdSecret`  | Name of the secret for Azure AD identity id | `azure-app-id`            |
 | `secrets.appKeySecret`  | Name of the secret for Azure AD identity secret | `azure-app-key`            |
 | `service.port`  | Port on service for other pods to talk to | `8888`            |
 | `service.targetPort`  | Port on container to serve traffic | `88`            |
@@ -140,8 +141,8 @@ Specify each parameter using the `--set key=value[,key=value]` argument to
 
 ```console
 $ helm install promitor-agent-scraper promitor/promitor-agent-scraper \
-               --set azureAuthentication.appId='<azure-ad-app-id>' \
-               --set azureAuthentication.appKey='<azure-ad-app-key>' \
+               --set azureAuthentication.identity.id='<azure-ad-app-id>' \
+               --set azureAuthentication.identity.key='<azure-ad-app-key>' \
                --set azureMetadata.tenantId='<azure-tenant-id>' \
                --set azureMetadata.subscriptionId='<azure-subscription-id>' \
                --values C:\Promitor\metric-declaration.yaml

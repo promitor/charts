@@ -12,11 +12,11 @@ image:
   tag:
 
 azureAuthentication:
-  appId: ""
-  appKey: ""
-  managedIdentityId: ""
   mode: "servicePrincipal"
-  aadpodidbinding: ""
+  identity:
+    id: ""
+    key: ""
+    binding: ""
 cache:
   enabled: true
   durationInMinutes: 5
@@ -62,9 +62,7 @@ secrets:
   # To use your own secret, set createSecret to false and define the name/keys that your secret uses
   createSecret: true
   secretName: ""
-  appIdSecret: azure-app-id
   appKeySecret: azure-app-key
-  managedIdentityIdSecret: azure-managed-identity-id
   
 service:
   port: 8889
