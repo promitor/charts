@@ -63,7 +63,7 @@ secrets:
   createSecret: true
   secretName: ""
   appKeySecret: azure-app-key
-  
+
 service:
   port: 8889
   targetPort: 88
