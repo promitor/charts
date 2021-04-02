@@ -30,6 +30,7 @@ To install the chart with the release name `promitor-agent-scraper`:
 
 ```console
 $ helm install promitor-agent-scraper promitor/promitor-agent-scraper \
+               --set azureAuthentication.identity.mode='ServicePrincipal' \
                --set azureAuthentication.identity.id='<azure-ad-app-id>' \
                --set azureAuthentication.identity.key='<azure-ad-app-key>' \
                --values /path/to/metric-declaration.yaml
@@ -143,6 +144,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to
 
 ```console
 $ helm install promitor-agent-scraper promitor/promitor-agent-scraper \
+               --set azureAuthentication.identity.mode='ServicePrincipal' \
                --set azureAuthentication.identity.id='<azure-ad-app-id>' \
                --set azureAuthentication.identity.key='<azure-ad-app-key>' \
                --set azureMetadata.tenantId='<azure-tenant-id>' \

@@ -30,6 +30,7 @@ To install the chart with the release name `promitor-agent-resource-discovery`:
 
 ```console
 $ helm install promitor-agent-resource-discovery promitor/promitor-agent-resource-discovery \
+               --set azureAuthentication.identity.mode='ServicePrincipal' \
                --set azureAuthentication.identity.id='<azure-ad-app-id>' \
                --set azureAuthentication.identity.key='<azure-ad-app-key>' \
                --values /path/to/metric-declaration.yaml
@@ -117,6 +118,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to
 
 ```console
 $ helm install promitor-agent-resource-discovery promitor/promitor-agent-resource-discovery \
+               --set azureAuthentication.identity.mode='ServicePrincipal' \
                --set azureAuthentication.identity.id='<azure-ad-app-id>' \
                --set azureAuthentication.identity.key='<azure-ad-app-key>' \
                --set azureLandscape.tenantId='<azure-tenant-id>' \
