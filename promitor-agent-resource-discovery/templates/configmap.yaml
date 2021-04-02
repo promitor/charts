@@ -16,7 +16,7 @@ data:
         mode: {{ .Values.azureAuthentication.mode | default "servicePrincipal"}}
   {{- if .Values.azureAuthentication.identity.id }}
         identityId: {{ .Values.azureAuthentication.identity.id}}
-  {{- else if .Values.azureAuthentication.appId }}      
+  {{- else if .Values.azureAuthentication.appId }}
         identityId: {{ .Values.azureAuthentication.appId}}
   {{- end }}
       cache:
