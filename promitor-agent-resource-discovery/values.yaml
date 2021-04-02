@@ -14,7 +14,7 @@ image:
 azureAuthentication:
   appId: "" # [Deprecated] Prefer identity.id
   appKey: "" # [Deprecated] Prefer identity.key
-  mode: "servicePrincipal"
+  mode: "ServicePrincipal"
   identity:
     id: ""
     key: ""
