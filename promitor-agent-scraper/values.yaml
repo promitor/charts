@@ -13,8 +13,13 @@ image:
   tag:
 
 azureAuthentication:
-  appId: ""
-  appKey: ""
+  appId: "" # [Deprecated] Prefer identity.id
+  appKey: "" # [Deprecated] Prefer identity.key
+  mode: "ServicePrincipal"
+  identity:
+    id: ""
+    key: ""
+    binding: ""
 metricSinks:
   atlassianStatuspage:
     enabled: false
@@ -99,7 +104,6 @@ secrets:
   # To use your own secret, set createSecret to false and define the name/keys that your secret uses
   createSecret: true
   secretName: ""
-  appIdSecret: azure-app-id
   appKeySecret: azure-app-key
   atlassianStatuspageApiKey: atlassian-statuspage-apikey
 

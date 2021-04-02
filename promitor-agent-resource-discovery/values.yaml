@@ -12,8 +12,13 @@ image:
   tag:
 
 azureAuthentication:
-  appId:
-  appKey:
+  appId: "" # [Deprecated] Prefer identity.id
+  appKey: "" # [Deprecated] Prefer identity.key
+  mode: "ServicePrincipal"
+  identity:
+    id: ""
+    key: ""
+    binding: ""
 cache:
   enabled: true
   durationInMinutes: 5

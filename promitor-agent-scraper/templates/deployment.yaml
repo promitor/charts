@@ -22,6 +22,9 @@ spec:
       {{- if .Values.podLabels }}
       {{- toYaml .Values.podLabels | nindent 8 }}
       {{- end }}
+      {{- if empty .Values.azureAuthentication.identity.binding | not }}
+        aadpodidbinding: {{ .Values.azureAuthentication.identity.binding }}
+      {{- end }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         {{- if .Values.secrets.createSecret }}
@@ -55,16 +58,13 @@ spec:
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
           env:
-          - name: PROMITOR_AUTH_APPID
-            valueFrom:
-              secretKeyRef:
-                  name: {{ template "promitor-agent-scraper.secretname" . }}
-                  key: {{ .Values.secrets.appIdSecret }}
+  {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey }}
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
               secretKeyRef:
                   name: {{ template "promitor-agent-scraper.secretname" . }}
                   key: {{ .Values.secrets.appKeySecret }}
+  {{- end}}
   {{- if .Values.metricSinks.atlassianStatuspage.apiKey }}
           - name: PROMITOR_ATLASSIAN_STATUSPAGE_APIKEY
             valueFrom:
