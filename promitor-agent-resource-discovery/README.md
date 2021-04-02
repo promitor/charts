@@ -63,6 +63,8 @@ their default values.
 | `azureLandscape.tenantId`  | Id of Azure tenant to discover resources in |             |
 | `azureLandscape.subscriptions`  | List of Azure subscription ids to discover resources in | `[]`            |
 | `resourceDiscoveryGroups`  | List of resource discovery groups to configured following the [resource discovery declaration docs](https://promitor.io/configuration/v2.x/resource-discovery) |        |
+| `azureAuthentication.appId`  | [Deprecated] Use `azureAuthentication.identity.id` instead |             |
+| `azureAuthentication.appKey`  | [Deprecated] Use `azureAuthentication.identity.key` instead |             |
 | `azureAuthentication.mode`  | Authentication mode option for Azure authentication. Options are `ServicePrincipal` (default), `UserAssignedManagedIdentity` or `SystemAssignedManagedIdentity` |             |
 | `azureAuthentication.identity.id`  | Id of the Azure AD entity to authenticate with |             |
 | `azureAuthentication.identity.key`  | Secret of the Azure AD entity to authenticate with, when using mode `ServicePrincipal` (default) or `UserAssignedManagedIdentity` |             |

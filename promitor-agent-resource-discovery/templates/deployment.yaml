@@ -53,7 +53,7 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-        {{- if .Values.azureAuthentication.identity.key }}
+        {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey}}
           env:
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
