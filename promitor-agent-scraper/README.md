@@ -101,6 +101,7 @@ their default values.
 | `azureMetadata.tenantId`  | Id of Azure tenant |             |
 | `azureMetadata.subscriptionId`  | Id of Azure subscription |             |
 | `azureMetadata.resourceGroupName`  | Name of resource group | `promitor`            |
+| `azureMetadata.cloud`  | Azure Cloud to authenticated and scraping metrics from. Options are Global (default), China, UsGov & Germany | `Global`            |
 | `metricDefaults.aggregation.interval`  | Default interval which defines over what period measurements of a metric should be aggregated | `00:05:00`            |
 | `metricDefaults.scraping.schedule`  | Cron expression that controls the fequency in which all the configured metrics will be scraped from Azure Monitor | `*/5 * * * *`            |
 | `metrics`  | List of metrics to scrape configured following the [metric declaration docs](https://promitor.io/configuration/metrics/) |        |
