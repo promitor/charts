@@ -69,6 +69,7 @@ data:
       tenantId: {{ .Values.azureMetadata.tenantId }}
       subscriptionId: {{ .Values.azureMetadata.subscriptionId }}
       resourceGroupName: {{ .Values.azureMetadata.resourceGroupName }}
+      cloud: {{ .Values.azureMetadata.cloud }}
     metricDefaults:
       aggregation:
         interval: {{ .Values.metricDefaults.aggregation.interval }}

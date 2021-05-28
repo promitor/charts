@@ -81,6 +81,7 @@ azureMetadata:
   tenantId: ""
   subscriptionId: ""
   resourceGroupName: promitor
+  cloud: "Global"
 metricDefaults:
   aggregation:
     interval: 00:05:00
