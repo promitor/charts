@@ -58,14 +58,14 @@ spec:
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
           env:
-  {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey }}
+  {{- if or (or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey) (eq .Values.secrets.createSecret false) }}
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
               secretKeyRef:
                   name: {{ template "promitor-agent-scraper.secretname" . }}
                   key: {{ .Values.secrets.appKeySecret }}
   {{- end}}
-  {{- if .Values.metricSinks.atlassianStatuspage.apiKey }}
+  {{- if or (.Values.metricSinks.atlassianStatuspage.apiKey) (and (eq .Values.metricSinks.atlassianStatuspage.enabled true) (eq .Values.secrets.createSecret false)) }}
           - name: PROMITOR_ATLASSIAN_STATUSPAGE_APIKEY
             valueFrom:
               secretKeyRef:
