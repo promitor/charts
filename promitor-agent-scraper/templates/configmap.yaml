@@ -39,6 +39,8 @@ data:
           metricUnavailableValue: {{ .Values.metricSinks.prometheusScrapingEndpoint.metricUnavailableValue | quote }}
           enableMetricTimestamps: {{ .Values.metricSinks.prometheusScrapingEndpoint.enableMetricTimestamps | quote }}
           baseUriPath: {{ .Values.metricSinks.prometheusScrapingEndpoint.baseUriPath | quote }}
+          labels:
+            transformation: {{ .Values.metricSinks.prometheusScrapingEndpoint.labelTransformation | quote }}
   {{- end }}
   {{- if .Values.metricSinks.atlassianStatuspage.enabled }}
         atlassianStatuspage:

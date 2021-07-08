@@ -33,6 +33,7 @@ metricSinks:
     baseUriPath: /metrics
     enableMetricTimestamps: true
     metricUnavailableValue: NaN
+    labelTransformation: None
     enableServiceDiscovery: true
     serviceMonitor:
       enabled: false
