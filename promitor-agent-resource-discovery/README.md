@@ -57,7 +57,7 @@ their default values.
 
 | Parameter                  | Description              | Default              |
 |:---------------------------|:-------------------------|:---------------------|
-| `image.repository`  | Repository which provides the image | `ghcr.io/tomkerkhove/promitor-agent-resource-discovery` |
+| `image.repository`  | Repository which provides the image | `containers.promitor.io/tomkerkhove/promitor-agent-resource-discovery` |
 | `image.tag`  | Tag of image to use | None, chart app version is used by default            |
 | `image.pullPolicy`  | Policy to pull image | `Always`            |
 | `azureLandscape.cloud`  | Azure Cloud to discover resources in. Options are `Global` (default), `China`, `UsGov` & `Germany` | `Global`            |

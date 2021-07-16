@@ -7,7 +7,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
-  repository: ghcr.io/tomkerkhove/promitor-agent-resource-discovery
+  repository: containers.promitor.io/tomkerkhove/promitor-agent-resource-discovery
   pullPolicy: Always
   tag:
 

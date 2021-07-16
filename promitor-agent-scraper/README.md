@@ -57,7 +57,7 @@ their default values.
 
 | Parameter                  | Description              | Default              |
 |:---------------------------|:-------------------------|:---------------------|
-| `image.repository`  | Repository which provides the image | `ghcr.io/tomkerkhove/promitor-agent-scraper` |
+| `image.repository`  | Repository which provides the image | `containers.promitor.io/tomkerkhove/promitor-agent-scraper` |
 | `image.tag`  | Tag of image to use | None, chart app version is used by default            |
 | `image.pullPolicy`  | Policy to pull image | `Always`            |
 | `image.pullSecrets`  | ImagePullSecrets for the pod | `[]`            |
