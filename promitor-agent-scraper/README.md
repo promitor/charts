@@ -84,6 +84,8 @@ their default values.
 | `metricSinks.prometheusScrapingEndpoint.serviceMonitor.labels`  | Labels for the ServiceMonitor |       `{}`           |
 | `metricSinks.prometheusScrapingEndpoint.serviceMonitor.interval`  | How often Prometheus should scrape  | `60s`            |
 | `metricSinks.prometheusScrapingEndpoint.serviceMonitor.timeout`  | Timeout for the scraping operation | `10s`            |
+| `metricSinks.prometheusScrapingEndpoint.serviceMonitor.metricRelabelings`  | MetricRelabelConfigs to apply to samples before ingestion. | `[]`            |
+| `metricSinks.prometheusScrapingEndpoint.serviceMonitor.relabelings`  | RelabelConfigs to apply to samples before scraping. | `[]`            |
 | `metricSinks.statsd.enabled`  | Indication whether or not metrics should be emitted to a StatsD server | `false`|
 | `metricSinks.statsd.host`  | DNS name or IP address of StatsD server |             |
 | `metricSinks.statsd.port`  | Port (UDP) address of StatsD server | `8125`            |

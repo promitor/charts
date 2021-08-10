@@ -39,10 +39,10 @@ metricSinks:
       enabled: false
       namespace: ""
       labels: {}
-      metricRelabelings: []
-      relabelings: []
       interval: 60s
       timeout: 10s
+      metricRelabelings: []
+      relabelings: []
   statsd:
     enabled: false
     host: ""
