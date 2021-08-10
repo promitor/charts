@@ -23,6 +23,14 @@ spec:
 {{- if .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.timeout }}
     scrapeTimeout: {{ .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.timeout }}
 {{- end }}
+{{- if .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.metricRelabelings }}
+    metricRelabelings:
+    {{- toYaml .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.metricRelabelings | nindent 4 }}
+{{- end }}
+{{- if .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.relabelings }}
+    relabelings:
+    {{- toYaml .Values.metricSinks.prometheusScrapingEndpoint.serviceMonitor.relabelings | nindent 4 }}
+{{- end }}
   jobLabel: {{ template "promitor-agent-scraper.fullname" . }}
   namespaceSelector:
     matchNames:
