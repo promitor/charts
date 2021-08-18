@@ -70,6 +70,13 @@ their default values.
 | `azureAuthentication.identity.id`  | Id of the Azure AD entity to authenticate with |             |
 | `azureAuthentication.identity.key`  | Secret of the Azure AD entity to authenticate with, when using mode `ServicePrincipal` (default) or `UserAssignedManagedIdentity` |             |
 | `azureAuthentication.identity.binding`  | Aad Pod Identity name, when using `UserAssignedManagedIdentity` or `SystemAssignedManagedIdentity` as mode |             |
+| `prometheus.enabled`  | Indication whether or not metrics should be exposed as a Prometheus scraping endpoint | `true`|
+| `prometheus.enableServiceDiscovery`  | Indication whether or not service discovery with annotations should be enabled ([docs](https://github.com/helm/charts/tree/master/stable/prometheus#scraping-pod-metrics-via-annotations)) | `true`            |
+| `prometheus.serviceMonitor.enabled`  | Indication whether or not to create a ServiceMonitor object for [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions) | `false`            |
+| `prometheus.serviceMonitor.namespace`  | The namespace where the ServiceMonitor should be created |                  |
+| `prometheus.serviceMonitor.labels`  | Labels for the ServiceMonitor |       `{}`           |
+| `prometheus.serviceMonitor.interval`  | How often Prometheus should scrape  | `60s`            |
+| `prometheus.serviceMonitor.timeout`  | Timeout for the scraping operation | `10s`            |
 | `cache.enabled`  | Indication whether or not discovered resources should be cached in-memory to avoid Azure throttling | `true`            |
 | `cache.durationInMinutes`  | Amount of minutes to cache discovered resources | `5`            |
 | `telemetry.applicationInsights.enabled`  | Indication whether or not to send telemetry to Azure Application Insights | `false`            |
