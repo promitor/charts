@@ -5,9 +5,9 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "promitor-agent-resource-discovery.labels" . | nindent 4 }}
-{{- if .Values.service.loadBalancer.enabled }}
-{{- if or (.Values.service.loadBalancer.azure.dnsPrefix) (.Values.service.loadBalancer.azure.exposeInternally) }}
+{{- if or (.Values.service.loadBalancer.enabled) (.Values.prometheus.enableServiceDiscovery) }}
   annotations:
+{{- if or (.Values.service.loadBalancer.azure.dnsPrefix) (.Values.service.loadBalancer.azure.exposeInternally) }}
   {{- if .Values.service.loadBalancer.azure.dnsPrefix }}
     service.beta.kubernetes.io/azure-dns-label-name: {{ .Values.service.loadBalancer.azure.dnsPrefix }}
   {{- end }}
@@ -15,6 +15,11 @@ metadata:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
   {{- end }}
 {{- end }}
+  {{- if .Values.prometheus.enableServiceDiscovery }}
+    prometheus.io/scrape: "true"
+    prometheus.io/path: /metrics
+    prometheus.io/port: {{ .Values.service.targetPort | quote }}
+  {{- end }}
 {{- end }}
 spec:
 {{- if .Values.service.loadBalancer.enabled }}

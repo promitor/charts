@@ -19,9 +19,20 @@ azureAuthentication:
     id: ""
     key: ""
     binding: ""
+
 cache:
   enabled: true
   durationInMinutes: 5
+
+prometheus:
+  enabled: true
+  enableServiceDiscovery: true
+  serviceMonitor:
+    enabled: false
+    namespace: ""
+    labels: {}
+    interval: 60s
+    timeout: 10s
 
 telemetry:
   defaultLogLevel: "Error"
