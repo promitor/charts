@@ -14,7 +14,12 @@ Learn more about our support options [here](https://github.com/tomkerkhove/promi
 
 Thanks for those who are supporting us via [GitHub Sponsors](https://github.com/sponsors/tomkerkhove/).
 
+[![Carlo Garcia-Mier](https://raw.githubusercontent.com/tomkerkhove/promitor/master//media/supporters/CarloGarcia.jpg)](https://github.com/CarloGarcia)
+[![Jorge Turrado Ferrero](https://raw.githubusercontent.com/tomkerkhove/promitor/master//media/supporters/JorTurFer.jpg)](https://github.com/JorTurFer)
 [![Karl Ots](https://raw.githubusercontent.com/tomkerkhove/promitor/master//media/supporters/karlgots.jpg)](https://github.com/karlgots)
+[![Loc Mai](https://raw.githubusercontent.com/tomkerkhove/promitor/master//media/supporters/locmai.jpg)](https://github.com/locmai)
+[![Lovelace Engineering](https://raw.githubusercontent.com/tomkerkhove/promitor/master//media/supporters/LovelaceEngineering.png)](https://github.com/LovelaceEngineering)
+[![Nills Franssens](https://raw.githubusercontent.com/tomkerkhove/promitor/master//media/supporters/nillsf.jpg)](https://github.com/NillsF)
 [![Richard Simpson](https://raw.githubusercontent.com/tomkerkhove/promitor/master//media/supporters/RichiCoder1.jpg)](https://github.com/RichiCoder1)
 [![Sam Vanhoutte](https://raw.githubusercontent.com/tomkerkhove/promitor/master//media/supporters/samvanhoutte.png)](https://github.com/samvanhoutte)
 
