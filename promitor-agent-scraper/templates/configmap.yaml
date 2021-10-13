@@ -77,5 +77,6 @@ data:
         interval: {{ .Values.metricDefaults.aggregation.interval }}
       scraping:
         schedule: {{ .Values.metricDefaults.scraping.schedule | quote }}
-    metrics:
+    metrics:{{- if .Values.metrics | len | eq 0 }} []{{- else }}
 {{ tpl $metrics . | indent 4 }}
+{{- end }}
