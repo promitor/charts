@@ -175,6 +175,10 @@ rbac:
     name: promitor-scraper
     annotations: {}
 
+    ## If true will mount service account token.
+    ## Set this to true if you plan on using Pod Security Policy
+    automountServiceAccountToken: false
+
 nodeSelector: {}
 
 securityContext:
