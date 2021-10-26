@@ -113,6 +113,8 @@ secrets:
 
 service:
   port: 8888
+  ## By default this pod is running as a non-root user.
+  ## If you choose targetPort <1024 it will fail to start.
   targetPort: 5000
   loadBalancer:
     enabled: false
@@ -181,7 +183,23 @@ rbac:
 
 nodeSelector: {}
 
+## securityContext and containerSecurityContext are using secure defaults.
+## Only override if you have a good reason to.
 securityContext:
-  enabled: false
+  enabled: true
+  runAsGroup: 10000
+  runAsNonRoot: true
+  runAsUser: 10000
+  seccompProfile:
+    type: RuntimeDefault
+
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL
+  enabled: true
+  privileged: false
+  readOnlyRootFilesystem: true
 
 tolerations: []
