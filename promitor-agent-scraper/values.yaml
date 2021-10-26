@@ -113,7 +113,7 @@ secrets:
 
 service:
   port: 8888
-  targetPort: 88
+  targetPort: 5000
   loadBalancer:
     enabled: false
     azure:
