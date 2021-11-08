@@ -67,3 +67,42 @@ jobs:
     - name: Show Kubernetes resources
       run: kubectl get all
       if: always()
+
+    - name: Show Pod Logs
+      run: |
+        CONTAINER_RESTART_COUNT=$(kubectl get pod -l app.kubernetes.io/name=promitor-agent-resource-discovery -o=jsonpath='{.items[0].status.containerStatuses[0].restartCount}')
+        kubectl logs -l app.kubernetes.io/name=promitor-agent-resource-discovery
+
+        echo "Current container logs"
+        kubectl logs -l app.kubernetes.io/name=promitor-agent-resource-discovery
+
+        if [ "$CONTAINER_RESTART_COUNT" -gt 0 ]; then
+          echo "Previous container logs"
+          kubectl logs -l app.kubernetes.io/name=promitor-agent-resource-discovery --previous
+        fi
+      if: always()
+
+    - name: Show Pod Info
+      run: kubectl describe pod -l app.kubernetes.io/name=promitor-agent-resource-discovery
+      if: always()
+
+    - name: Verify Pod & Container Status is Running
+      run: |
+        POD_STATUS=$(kubectl get pod -l app.kubernetes.io/name=promitor-agent-resource-discovery -o=jsonpath='{.items[0].status.phase}')
+        echo "Pod status is ${POD_STATUS}."
+
+        CONTAINER_READY=$(kubectl get pod -l app.kubernetes.io/name=promitor-agent-resource-discovery -o=jsonpath='{.items[0].status.containerStatuses[0].ready}')
+        echo "Is the container ready: ${CONTAINER_READY}."
+
+        if [ "$POD_STATUS" = "Running" ]; then
+
+          if $CONTAINER_READY; then
+              exit 0
+          else
+              exit -1
+          fi
+        else
+            exit -1
+        fi
+      if: always()
+
