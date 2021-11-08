@@ -31,6 +31,9 @@ spec:
         checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
         {{- end }}
     spec:
+      {{- if and .Values.rbac.create .Values.rbac.serviceAccount.create .Values.rbac.serviceAccount.automountServiceAccountToken }}
+      automountServiceAccountToken: true
+      {{- end }}
       {{- if .Values.securityContext.enabled }}
       securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 8 }}
       {{- end }}
@@ -74,9 +77,16 @@ spec:
   {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          {{- if .Values.containerSecurityContext.enabled }}
+          securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+          {{- end }}
           volumeMounts:
           - name: config-volume-{{ template "promitor-agent-scraper.name" . }}
             mountPath: /config/
+          {{- if and .Values.containerSecurityContext.enabled .Values.containerSecurityContext.readOnlyRootFilesystem }}
+          - name: tmp
+            mountPath: /tmp/
+          {{- end }}
   {{- if .Values.health.liveness.enabled }}
           livenessProbe:
             failureThreshold: {{ .Values.health.liveness.thresholds.failure }}
@@ -109,3 +119,7 @@ spec:
         - name: config-volume-{{ template "promitor-agent-scraper.name" . }}
           configMap:
             name: config-map-{{ template "promitor-agent-scraper.name" . }}
+        {{- if and .Values.containerSecurityContext.enabled .Values.containerSecurityContext.readOnlyRootFilesystem }}
+        - emptyDir: {}
+          name: tmp
+        {{- end }}
