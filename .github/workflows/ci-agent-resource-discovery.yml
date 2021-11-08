@@ -56,6 +56,10 @@ jobs:
     - name: Install Helm chart
       run: helm install promitor-agent-resource-discovery ./promitor-agent-resource-discovery/ --values examples/promitor-agent-resource-discovery.config.yaml --wait
 
+    - name: Wait for Kubernetes workload to spin up
+      run: sleep 30s
+      shell: bash
+
     - name: Show installed Helm charts
       run: helm ls
       if: always()
