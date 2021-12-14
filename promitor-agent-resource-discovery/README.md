@@ -111,6 +111,8 @@ their default values.
 | `securityContext.*`  | Custom security context object for pod ([docs](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)) | `{}`            |
 | `securityContext.enabled`  | Whether to include custom security context for pod or not | `false`            |
 | `tolerations` | Tolerations for pod assignment | `[]` |
+| `extraVolumeMounts`                     | Pass extra volumeMounts to the promitor container                        | `[]`                                 |
+| `extraVolumes`                          | Pass extra volumes to the promitor deployment                            | `[]`
 | `resources`  | Pod resource requests & limits |    `{}`    |
 | `secrets.createSecret`  | Indication if you want to bring your own secret level of logging | `true`            |   |
 | `secrets.appKeySecret`  | Name of the secret for Azure AD identity secret | `azure-app-key`            |
