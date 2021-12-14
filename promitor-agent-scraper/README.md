@@ -93,7 +93,7 @@ their default values.
 | `prometheusRule.enabled`          | Indication whether or not to create PrometheusRule object(s) for [Prometheus operator](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions)      | `false`                     |
 | `prometheusRule.additionalLabels` | Additional labels that can be used so prometheusRules will be discovered by Prometheus  | `{}`        |
 | `prometheusRule.namespace`        | namespace where prometheusRules object should be created          |                             |
-| `prometheusRule.rules`            | [rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) to be created | `[]` 
+| `prometheusRule.rules`            | [rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) to be created | `[]`
 | `telemetry.applicationInsights.enabled`  | Indication whether or not to send telemetry to Azure Application Insights | `false`            |
 | `telemetry.applicationInsights.logLevel`  | Minimum level of logging for Azure Application Insights |             |
 | `telemetry.applicationInsights.key`  | Application Insights instrumentation key |             |
@@ -136,6 +136,8 @@ their default values.
 | `containerSecurityContext.enabled`  | Whether to include custom security context for container or not | `true`            |
 | `containerSecurityContext.*`  | Custom security context object for container ([docs](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container)) | <pre>allowPrivilegeEscalation: false<br>capabilities:<br>&emsp;drop:<br>&emsp;- ALL<br>privileged: false<br>readOnlyRootFilesystem: true</pre> |
 | `tolerations` | Tolerations for pod assignment | `[]` |
+| `extraVolumeMounts`                     | Pass extra volumeMounts to the promitor container                        | `[]`                                 |
+| `extraVolumes`                          | Pass extra volumes to the promitor deployment                            | `[]`
 | `resources`  | Pod resource requests & limits |    `{}`    |
 | `secrets.createSecret`  | Indication if you want to bring your own secret level of logging | `true`            |
 | `secrets.appKeySecret`  | Name of the secret for Azure AD identity secret | `azure-app-key`            |

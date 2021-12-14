@@ -147,3 +147,18 @@ securityContext:
   enabled: false
 
 tolerations: []
+
+## Pass extra volumeMounts to the promitor container
+extraVolumeMounts: []
+  # - name: secrets-store-inline
+  #   mountPath: "/mnt/promitor-secrets"
+  #   readOnly: true
+
+## Pass extra volumes to the promitor deployment
+extraVolumes: []
+  # - name: secrets-store-inline
+  #   csi:
+  #       driver: secrets-store.csi.k8s.io
+  #       readOnly: true
+  #       volumeAttributes:
+  #         secretProviderClass: "promitor-secrets"
