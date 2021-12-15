@@ -5,6 +5,10 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "promitor-agent-scraper.labels" . | nindent 4 }}
+{{- if semverCompare "<=1.19-0" .Capabilities.KubeVersion.Version }}
+  annotations:
+    seccomp.security.alpha.kubernetes.io/pod: {{ .Values.containerSecurityContext.seccompProfile.type }}
+{{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
@@ -78,7 +82,14 @@ spec:
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           {{- if .Values.containerSecurityContext.enabled }}
-          securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+          securityContext:
+            runAsGroup: {{ .Values.containerSecurityContext.runAsGroup }}
+            runAsNonRoot: {{ .Values.containerSecurityContext.runAsNonRoot }}
+            runAsUser: {{ .Values.containerSecurityContext.runAsUser }}
+          {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.Version }}
+            seccompProfile:
+              type: {{ .Values.containerSecurityContext.seccompProfile.type }}              
+          {{- end }}
           {{- end }}
           volumeMounts:
           - name: config-volume-{{ template "promitor-agent-scraper.name" . }}
