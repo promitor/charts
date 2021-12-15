@@ -88,7 +88,7 @@ spec:
             runAsUser: {{ .Values.containerSecurityContext.runAsUser }}
           {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.Version }}
             seccompProfile:
-              type: {{ .Values.containerSecurityContext.seccompProfile.type }}              
+              type: {{ .Values.containerSecurityContext.seccompProfile.type }}
           {{- end }}
           {{- end }}
           volumeMounts:
