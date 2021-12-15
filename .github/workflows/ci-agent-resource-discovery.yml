@@ -24,9 +24,10 @@ jobs:
     name: Deploy to Kubernetes ${{ matrix.kubernetesVersion }} (Kind)
     needs: [lint-helm-3-x]
     runs-on: ubuntu-latest
-        strategy:
+    strategy:
       fail-fast: false
       matrix:
+        kubernetesVersion: [v1.22, v1.21, v1.20, v1.19, v1.18, v1.17]
         include:
           # Images are defined on every Kind release
           # See https://github.com/kubernetes-sigs/kind/releases
