@@ -98,6 +98,9 @@ spec:
           - name: tmp
             mountPath: /tmp/
           {{- end }}
+          {{- if .Values.extraVolumeMounts }}
+{{ toYaml .Values.extraVolumeMounts | indent 10 }}
+          {{- end }}
   {{- if .Values.health.liveness.enabled }}
           livenessProbe:
             failureThreshold: {{ .Values.health.liveness.thresholds.failure }}
@@ -133,4 +136,7 @@ spec:
         {{- if and .Values.containerSecurityContext.enabled .Values.containerSecurityContext.readOnlyRootFilesystem }}
         - emptyDir: {}
           name: tmp
+        {{- end }}
+        {{- if .Values.extraVolumes }}
+{{ toYaml .Values.extraVolumes | indent 8 }}
         {{- end }}
