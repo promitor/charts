@@ -5,6 +5,10 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "promitor-agent-scraper.labels" . | nindent 4 }}
+{{- if semverCompare "<1.19-0" .Capabilities.KubeVersion.Version }}
+  annotations:
+    seccomp.security.alpha.kubernetes.io/pod: {{ .Values.securityContext.seccompProfile.type }}
+{{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
@@ -35,7 +39,14 @@ spec:
       automountServiceAccountToken: true
       {{- end }}
       {{- if .Values.securityContext.enabled }}
-      securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 8 }}
+      securityContext:
+        runAsGroup: {{ .Values.securityContext.runAsGroup }}
+        runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
+        runAsUser: {{ .Values.securityContext.runAsUser }}
+      {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.Version }}
+        seccompProfile:
+          type: {{ .Values.securityContext.seccompProfile.type }}
+      {{- end }}
       {{- end }}
       {{- if .Values.rbac.create }}
       serviceAccountName: {{ template "promitor-agent-scraper.serviceaccountname" . }}
