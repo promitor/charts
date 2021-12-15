@@ -39,7 +39,14 @@ spec:
       automountServiceAccountToken: true
       {{- end }}
       {{- if .Values.securityContext.enabled }}
-      securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 8 }}
+      securityContext:
+        runAsGroup: {{ .Values.containerSecurityContext.runAsGroup }}
+        runAsNonRoot: {{ .Values.containerSecurityContext.runAsNonRoot }}
+        runAsUser: {{ .Values.containerSecurityContext.runAsUser }}
+      {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.Version }}
+        seccompProfile:
+          type: {{ .Values.containerSecurityContext.seccompProfile.type }}
+      {{- end }}
       {{- end }}
       {{- if .Values.rbac.create }}
       serviceAccountName: {{ template "promitor-agent-scraper.serviceaccountname" . }}
@@ -82,14 +89,7 @@ spec:
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           {{- if .Values.containerSecurityContext.enabled }}
-          securityContext:
-            runAsGroup: {{ .Values.containerSecurityContext.runAsGroup }}
-            runAsNonRoot: {{ .Values.containerSecurityContext.runAsNonRoot }}
-            runAsUser: {{ .Values.containerSecurityContext.runAsUser }}
-          {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.Version }}
-            seccompProfile:
-              type: {{ .Values.containerSecurityContext.seccompProfile.type }}
-          {{- end }}
+          securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
           {{- end }}
           volumeMounts:
           - name: config-volume-{{ template "promitor-agent-scraper.name" . }}
