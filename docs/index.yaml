@@ -3,7 +3,26 @@ entries:
   promitor-agent-resource-discovery:
   - apiVersion: v2
     appVersion: 0.7.0
-    created: "2021-12-17T08:07:56.7282887+01:00"
+    created: "2022-01-02T10:26:29.0866895+01:00"
+    description: Automatically discover Azure resources to be scraped by Promitor
+      Scraper agent.
+    digest: 044ff8f49bb248dd0bd6d08e496c71104143469450dd093e60cd6c5975cbc830
+    home: https://promitor.io
+    icon: https://raw.githubusercontent.com/tomkerkhove/promitor/master/docs/media/logos/promitor.png
+    maintainers:
+    - name: Tom Kerkhove
+      url: https://github.com/tomkerkhove
+    name: promitor-agent-resource-discovery
+    sources:
+    - https://github.com/tomkerkhove/promitor
+    - https://github.com/promitor/charts
+    type: application
+    urls:
+    - https://charts.promitor.io/promitor-agent-resource-discovery-0.7.1.tgz
+    version: 0.7.1
+  - apiVersion: v2
+    appVersion: 0.7.0
+    created: "2022-01-02T10:26:29.0856893+01:00"
     description: Automatically discover Azure resources to be scraped by Promitor
       Scraper agent.
     digest: b687baf96e770030e9be4d35fe38a9d40ab9469f9dae8e91549461a34034b02d
@@ -22,7 +41,7 @@ entries:
     version: 0.7.0
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2021-12-17T08:07:56.7272886+01:00"
+    created: "2022-01-02T10:26:29.080689+01:00"
     description: Automatically discover Azure resources to be scraped by Promitor
       Scraper agent.
     digest: 574ef36ae899031a99034b1b7df0dd0d4e222c2f193295b34408782d03a5e1af
@@ -41,7 +60,7 @@ entries:
     version: 0.6.0
   - apiVersion: v2
     appVersion: 0.5.0
-    created: "2021-12-17T08:07:56.714957+01:00"
+    created: "2022-01-02T10:26:29.0756619+01:00"
     description: Automatically discover Azure resources to be scraped by Promitor
       Scraper agent.
     digest: 279700c3a164166d99da1c77c3970a769a68187629f86099ef3f918c55c5e12e
@@ -60,7 +79,7 @@ entries:
     version: 0.5.0
   - apiVersion: v2
     appVersion: 0.4.1
-    created: "2021-12-17T08:07:56.6955162+01:00"
+    created: "2022-01-02T10:26:29.0706601+01:00"
     description: Automatically discover Azure resources to be scraped by Promitor
       Scraper agent.
     digest: 402804b870f74710577394342639aa814ab0e3e9fce9273c4f455118bce49780
@@ -79,7 +98,7 @@ entries:
     version: 0.4.1
   - apiVersion: v2
     appVersion: 0.4.0
-    created: "2021-12-17T08:07:56.6823491+01:00"
+    created: "2022-01-02T10:26:28.9415747+01:00"
     description: Automatically discover Azure resources to be scraped by Promitor
       Scraper agent.
     digest: 7201436c7df8b1cd4fa151a02d6c642bc1d76f01ec6a3f4e412dabbd451c02ba
@@ -98,7 +117,7 @@ entries:
     version: 0.4.0
   - apiVersion: v2
     appVersion: 0.3.0
-    created: "2021-12-17T08:07:56.6656152+01:00"
+    created: "2022-01-02T10:26:28.8399382+01:00"
     description: Automatically discover Azure resources to be scraped by Promitor
       Scraper agent.
     digest: 202e7e1916c938101a1a3629f3b97d459c12aae1eb4c569d7e0efbe46946ff51
@@ -117,7 +136,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: 0.2.0
-    created: "2021-12-17T08:07:56.6519792+01:00"
+    created: "2022-01-02T10:26:28.810433+01:00"
     description: Automatically discover Azure resources to be scraped by Promitor
       Scraper agent.
     digest: c206a387cdb2cf35737a772647e614530d5f1590963a15191840f5079798a3ce
@@ -136,7 +155,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2021-12-17T08:07:56.6417014+01:00"
+    created: "2022-01-02T10:26:28.7191976+01:00"
     description: Automatically discover Azure resources to be scraped by Promitor
       Scraper agent.
     digest: 41ab73a2c05df5412e6b2debe8e2694aee05c430f39e3224988defc7ff79bf5b
@@ -155,7 +174,7 @@ entries:
     version: 0.1.0
   - apiVersion: v2
     appVersion: 0.1.0-rc-2
-    created: "2021-12-17T08:07:56.620231+01:00"
+    created: "2022-01-02T10:26:28.5810784+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 9c867d55e15d9c1ab9bfe7c461b5e8bf7a2338b696923a2928a8a90d641d73b7
     home: https://promitor.io
@@ -172,7 +191,7 @@ entries:
     version: 0.1.0-rc-2
   - apiVersion: v2
     appVersion: 0.1.0-rc
-    created: "2021-12-17T08:07:56.6336989+01:00"
+    created: "2022-01-02T10:26:28.6769762+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: e0b656e263fec6b1af59a67ba842e486a5f7f6917424ebf78a97d16610cad0b8
     home: https://promitor.io
@@ -190,7 +209,25 @@ entries:
   promitor-agent-scraper:
   - apiVersion: v2
     appVersion: 2.6.0
-    created: "2021-12-17T08:07:57.0439479+01:00"
+    created: "2022-01-02T10:26:31.6712854+01:00"
+    description: Promitor, bringing Azure Monitor metrics where you need them.
+    digest: af7022165bdadca08858330285f2961f67092b198c7100de0bbcfbf12c051105
+    home: https://promitor.io
+    icon: https://raw.githubusercontent.com/tomkerkhove/promitor/master/docs/media/logos/promitor.png
+    maintainers:
+    - name: Tom Kerkhove
+      url: https://github.com/tomkerkhove
+    name: promitor-agent-scraper
+    sources:
+    - https://github.com/tomkerkhove/promitor
+    - https://github.com/promitor/charts
+    type: application
+    urls:
+    - https://charts.promitor.io/promitor-agent-scraper-2.7.1.tgz
+    version: 2.7.1
+  - apiVersion: v2
+    appVersion: 2.6.0
+    created: "2022-01-02T10:26:31.6701494+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: bcddf71b8d15f9b85111844d9f12926daca22e34d134ab253b2ba6ae0af7a026
     home: https://promitor.io
@@ -208,7 +245,7 @@ entries:
     version: 2.7.0
   - apiVersion: v2
     appVersion: 2.5.1
-    created: "2021-12-17T08:07:57.0402387+01:00"
+    created: "2022-01-02T10:26:31.6645866+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 843cc6911a616ba91bfdaac57197db410cb53f9257f666b3be5b43ec69b42608
     home: https://promitor.io
@@ -226,7 +263,7 @@ entries:
     version: 2.6.3
   - apiVersion: v2
     appVersion: 2.5.1
-    created: "2021-12-17T08:07:57.0264797+01:00"
+    created: "2022-01-02T10:26:31.6575627+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 1f7640545533f9486b4fb41836ac0ef2a29b953a0234ef0a163ad9ed035d60f6
     home: https://promitor.io
@@ -244,7 +281,7 @@ entries:
     version: 2.6.2
   - apiVersion: v2
     appVersion: 2.5.1
-    created: "2021-12-17T08:07:57.0174797+01:00"
+    created: "2022-01-02T10:26:31.6518403+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: eab8ef204f1d05969fb78b36ccd7aaefa50d883bf70484c58603ef10c2124af9
     home: https://promitor.io
@@ -262,7 +299,7 @@ entries:
     version: 2.6.1
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2021-12-17T08:07:57.0104296+01:00"
+    created: "2022-01-02T10:26:31.6454419+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: b9f4570035093e4ae1d5230d5086befdea2911ec41b9221df7135dbe91dfb13d
     home: https://promitor.io
@@ -280,7 +317,7 @@ entries:
     version: 2.6.0
   - apiVersion: v2
     appVersion: 2.4.0
-    created: "2021-12-17T08:07:57.0009313+01:00"
+    created: "2022-01-02T10:26:31.6394416+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: e94aeb714c867a6715c6e6acceec6d1e24d9bf7aecc6aabb6307dcc038fcb718
     home: https://promitor.io
@@ -298,7 +335,7 @@ entries:
     version: 2.5.1
   - apiVersion: v2
     appVersion: 2.4.0
-    created: "2021-12-17T08:07:56.99243+01:00"
+    created: "2022-01-02T10:26:31.5394149+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: b71ef0bfec7364b10648c84c53b718e0338f4d58f7fe6698147a1b9290ea9abf
     home: https://promitor.io
@@ -316,7 +353,7 @@ entries:
     version: 2.5.0
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2021-12-17T08:07:56.9792434+01:00"
+    created: "2022-01-02T10:26:31.4219859+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: d57eadb9d6bc80aa3d841f6e39025b20cd0260582ca1d3a2c24ff9f365f7ba34
     home: https://promitor.io
@@ -334,7 +371,7 @@ entries:
     version: 2.4.3
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2021-12-17T08:07:56.9702399+01:00"
+    created: "2022-01-02T10:26:31.3422345+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 3e4bca591350c79133347f04a9091b3fd06744fdaefe536a543c4262d93bc6c6
     home: https://promitor.io
@@ -352,7 +389,7 @@ entries:
     version: 2.4.2
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2021-12-17T08:07:56.9617251+01:00"
+    created: "2022-01-02T10:26:31.1583447+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: a781247f01cf3c1a1c27361fffd46c38a27483b1508f3bc888805fc1977ddbdb
     home: https://promitor.io
@@ -370,7 +407,7 @@ entries:
     version: 2.4.1
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2021-12-17T08:07:56.9490585+01:00"
+    created: "2022-01-02T10:26:31.0925222+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 012301d7961d219c94aa494f13b526a358313089eec81ab2d2fbed2578fd1263
     home: https://promitor.io
@@ -388,7 +425,7 @@ entries:
     version: 2.4.0
   - apiVersion: v2
     appVersion: 2.2.0
-    created: "2021-12-17T08:07:56.9395918+01:00"
+    created: "2022-01-02T10:26:31.0500701+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: d2a11eccf620a7d310cd760a3ec590be3dfbc43fbba329f724ea144ff6f125c6
     home: https://promitor.io
@@ -406,7 +443,7 @@ entries:
     version: 2.3.0
   - apiVersion: v2
     appVersion: 2.1.1
-    created: "2021-12-17T08:07:56.9306111+01:00"
+    created: "2022-01-02T10:26:30.9761992+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 946142bf80bd62d85c4c818f232c4e8a640f48d76e7a0854d16d143179044a08
     home: https://promitor.io
@@ -424,7 +461,7 @@ entries:
     version: 2.2.2
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2021-12-17T08:07:56.9199789+01:00"
+    created: "2022-01-02T10:26:30.8593912+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 0fd0eac74a82c9741c84a2728ca2d5e173fa29ae4ce2056b7f41ac88120e75ea
     home: https://promitor.io
@@ -442,7 +479,7 @@ entries:
     version: 2.2.1
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2021-12-17T08:07:56.9109074+01:00"
+    created: "2022-01-02T10:26:30.8214188+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 85a89c6109f53fc2fbfaca66fb562bb84e4bb827c0166e4a71d8ef919cfecbb6
     home: https://promitor.io
@@ -460,7 +497,7 @@ entries:
     version: 2.2.0
   - apiVersion: v2
     appVersion: 2.0.0
-    created: "2021-12-17T08:07:56.8995656+01:00"
+    created: "2022-01-02T10:26:30.722223+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 2cda4a464fc7557598d0e672862bcafc436f927257d2eff358b0b756cc2baf30
     home: https://promitor.io
@@ -478,7 +515,7 @@ entries:
     version: 2.1.0
   - apiVersion: v2
     appVersion: 2.0.0
-    created: "2021-12-17T08:07:56.8921249+01:00"
+    created: "2022-01-02T10:26:30.6205673+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: 610f22aeaede52044e7a2979f9c8935884d9e4885e1b7a22cc52a8fe10893a18
     home: https://promitor.io
@@ -496,7 +533,7 @@ entries:
     version: 2.0.0
   - apiVersion: v2
     appVersion: 2.0.0-rc-2
-    created: "2021-12-17T08:07:56.8751008+01:00"
+    created: "2022-01-02T10:26:30.3586564+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: f8e455f8e216d22fb935fe6ac0d67a99dd67cf3608df6d3c1ebbccd297f4e8c8
     home: https://promitor.io
@@ -513,7 +550,7 @@ entries:
     version: 2.0.0-rc-2
   - apiVersion: v2
     appVersion: 2.0.0-rc
-    created: "2021-12-17T08:07:56.8838332+01:00"
+    created: "2022-01-02T10:26:30.4884892+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: fb98e45ff316fc3af85a050edae9ecd02c1a1f379eed28d6a6dfe28b4f61d1fe
     home: https://promitor.io
@@ -530,7 +567,7 @@ entries:
     version: 2.0.0-rc
   - apiVersion: v2
     appVersion: 2.0.0-preview-3
-    created: "2021-12-17T08:07:56.8639137+01:00"
+    created: "2022-01-02T10:26:30.3463651+01:00"
     description: Promitor, bringing Azure Monitor metrics where you need them.
     digest: c339ca4b67df12eadcce807bd7bea0fed12f58f0ee203a3877a0fa6548b2546d
     home: https://promitor.io
@@ -547,7 +584,7 @@ entries:
     version: 2.0.0-preview-3
   - apiVersion: v1
     appVersion: 2.0.0-preview-2
-    created: "2021-12-17T08:07:56.8525209+01:00"
+    created: "2022-01-02T10:26:30.3129143+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: 266d57a48054c0e8d89f2f945284b406bdf4d0cda117a6b9333c2408ff266d35
     home: https://github.com/tomkerkhove/promitor
@@ -561,7 +598,7 @@ entries:
     version: 2.0.0-preview-2
   - apiVersion: v1
     appVersion: 2.0.0-preview-1
-    created: "2021-12-17T08:07:56.8412882+01:00"
+    created: "2022-01-02T10:26:30.2472531+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: b201dd5d92dc647ddf28a38f9c6ffad286d01e5b78a292abb5009713ce280a7c
     home: https://github.com/tomkerkhove/promitor
@@ -575,7 +612,7 @@ entries:
     version: 2.0.0-preview-1
   - apiVersion: v1
     appVersion: 1.6.1
-    created: "2021-12-17T08:07:56.8318598+01:00"
+    created: "2022-01-02T10:26:30.1488254+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: 2a1f2155b271acc1a938c736684483927101fd4873eff06870fb019e85ac02ff
     home: https://github.com/tomkerkhove/promitor
@@ -589,7 +626,7 @@ entries:
     version: 1.6.1
   - apiVersion: v1
     appVersion: 1.6.1
-    created: "2021-12-17T08:07:56.8190297+01:00"
+    created: "2022-01-02T10:26:29.9927297+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: 51a41b5fd3b4bd8f7c3c97cbc05f8bc585b69745b4dbce79991d9e7d7d25087e
     home: https://github.com/tomkerkhove/promitor
@@ -603,7 +640,7 @@ entries:
     version: 1.6.0
   - apiVersion: v1
     appVersion: 1.6.0-preview-1
-    created: "2021-12-17T08:07:56.8078024+01:00"
+    created: "2022-01-02T10:26:29.9478063+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: daf2e355c8913b0cf481f184bd31e9ad8c2961acfe9999c235ac1f1795c475d1
     home: https://github.com/tomkerkhove/promitor
@@ -617,7 +654,7 @@ entries:
     version: 1.6.0-alpha
   - apiVersion: v1
     appVersion: 1.5.0
-    created: "2021-12-17T08:07:56.7990744+01:00"
+    created: "2022-01-02T10:26:29.8330632+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: 3042053dc2a7765205478bbdf990fa786cd022e4f3a498831719b84fcce91b8b
     home: https://github.com/tomkerkhove/promitor
@@ -631,7 +668,7 @@ entries:
     version: 1.4.0
   - apiVersion: v1
     appVersion: 1.3.0
-    created: "2021-12-17T08:07:56.7865341+01:00"
+    created: "2022-01-02T10:26:29.7351049+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: 9343b9fb8314fa05b08514c36460e22bc9d25e5b1b906a4e781bc15e97984759
     home: https://github.com/tomkerkhove/promitor
@@ -645,7 +682,7 @@ entries:
     version: 1.2.0
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-12-17T08:07:56.7775213+01:00"
+    created: "2022-01-02T10:26:29.5718917+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: 48f13defbd04718aa39885db29a82643920dbc6a634ae7b2629e3e1f48614c06
     home: https://github.com/tomkerkhove/promitor
@@ -659,7 +696,7 @@ entries:
     version: 1.1.0
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-12-17T08:07:56.7664139+01:00"
+    created: "2022-01-02T10:26:29.4162232+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: f349c15865b53cd97be12c7d99eb4b32c563b135af5dd6b8929e8c3640737a15
     home: https://github.com/tomkerkhove/promitor
@@ -673,7 +710,7 @@ entries:
     version: 1.0.0
   - apiVersion: v1
     appVersion: 1.0.0-preview-8
-    created: "2021-12-17T08:07:56.7568569+01:00"
+    created: "2022-01-02T10:26:29.3300844+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: ab8b8060a7cb856535e7109c54fcf180828d5f7b9a2afb3660d0ec63ee9900de
     home: https://github.com/tomkerkhove/promitor
@@ -687,7 +724,7 @@ entries:
     version: 0.3.0
   - apiVersion: v1
     appVersion: 1.0.0-preview-6
-    created: "2021-12-17T08:07:56.7452889+01:00"
+    created: "2022-01-02T10:26:29.1871422+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: fafcd66eed4bd6b5ef27dac791c280632857ef0da8c25e7f29c112ae65bad001
     home: https://github.com/tomkerkhove/promitor
@@ -701,7 +738,7 @@ entries:
     version: 0.2.0
   - apiVersion: v1
     appVersion: 1.0.0-preview-5
-    created: "2021-12-17T08:07:56.73779+01:00"
+    created: "2022-01-02T10:26:29.1704948+01:00"
     description: A Helm chart to deploy Promitor, an Azure Monitor scraper for Prometheus
     digest: 789660228ecf452a4349109f8201fe438a4f16f98c2efa126eb5f910ec42e235
     home: https://github.com/tomkerkhove/promitor
@@ -710,4 +747,4 @@ entries:
     urls:
     - https://charts.promitor.io/promitor-agent-scraper-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-17T08:07:56.6093078+01:00"
+generated: "2022-01-02T10:26:28.5085785+01:00"
