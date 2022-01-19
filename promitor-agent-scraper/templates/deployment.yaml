@@ -34,6 +34,9 @@ spec:
         {{- if .Values.secrets.createSecret }}
         checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
         {{- end }}
+        {{- if .Values.annotations }}
+        {{- toYaml .Values.annotations | nindent 8 }}
+        {{- end }}
     spec:
       {{- if and .Values.rbac.create .Values.rbac.serviceAccount.create .Values.rbac.serviceAccount.automountServiceAccountToken }}
       automountServiceAccountToken: true
