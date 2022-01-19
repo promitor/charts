@@ -146,6 +146,8 @@ affinity: {}
 
 podLabels: {}
 
+annotations: {}
+
 priorityClassName: ""
 
 resources: {}

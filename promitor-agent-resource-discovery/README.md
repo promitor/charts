@@ -107,6 +107,7 @@ their default values.
 | `affinity`  | Affinity settings ([docs](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)) |    `{}`    |
 | `nodeSelector` | Node labels for pod assignment | `{}` |
 | `podLabels`  | Additional pod labels to include |    `{}`    |
+| `annotations` | Additional annotations to include | `{}` |
 | `priorityClassName`  | Priority class to be used by pod ([docs](https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/)) |    `""`    |
 | `securityContext.*`  | Custom security context object for pod ([docs](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)) | `{}`            |
 | `securityContext.enabled`  | Whether to include custom security context for pod or not | `false`            |
