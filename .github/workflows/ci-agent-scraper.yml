@@ -52,6 +52,10 @@ jobs:
     - name: Helm install
       uses: Azure/setup-helm@v1
 
+    - name: Download Metrics configuration
+      run: wget https://raw.githubusercontent.com/tomkerkhove/promitor/master/config/promitor/scraper/metrics.yaml
+      working-directory: ./config
+
     - name: Create k8s ${{ matrix.kubernetesVersion }} Kind Cluster
       uses: helm/kind-action@v1.2.0
       with:
@@ -76,10 +80,10 @@ jobs:
       run: kubectl config set-context --current --namespace=${{ env.kubernetes_namespace }}
 
     - name: Template Helm chart
-      run: helm template promitor-agent-scraper ./promitor-agent-scraper/ --set azureAuthentication.identity.id=${{ secrets.SCRAPER_APP_ID }} --set azureAuthentication.identity.key=${{ secrets.SCRAPER_APP_KEY }} --set azureMetadata.tenantId=${{ secrets.AZURE_TENANT_ID }} --set azureMetadata.subscriptionId=${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      run: helm template promitor-agent-scraper ./promitor-agent-scraper/ --set azureAuthentication.identity.id=${{ secrets.SCRAPER_APP_ID }} --set azureAuthentication.identity.key=${{ secrets.SCRAPER_APP_KEY }} --set azureMetadata.tenantId=${{ secrets.AZURE_TENANT_ID }} --set azureMetadata.subscriptionId=${{ secrets.AZURE_SUBSCRIPTION_ID }} --values ./config/scraper.yaml
 
     - name: Install Helm chart
-      run: helm install promitor-agent-scraper ./promitor-agent-scraper/ --set azureAuthentication.identity.id=${{ secrets.SCRAPER_APP_ID }} --set azureAuthentication.identity.key=${{ secrets.SCRAPER_APP_KEY }} --set azureMetadata.tenantId=${{ secrets.AZURE_TENANT_ID }} --set azureMetadata.subscriptionId=${{ secrets.AZURE_SUBSCRIPTION_ID }} --wait
+      run: helm install promitor-agent-scraper ./promitor-agent-scraper/ --set azureAuthentication.identity.id=${{ secrets.SCRAPER_APP_ID }} --set azureAuthentication.identity.key=${{ secrets.SCRAPER_APP_KEY }} --set azureMetadata.tenantId=${{ secrets.AZURE_TENANT_ID }} --set azureMetadata.subscriptionId=${{ secrets.AZURE_SUBSCRIPTION_ID }} --values ./config/scraper.yaml --wait
 
     - name: Wait for Kubernetes workload to spin up
       run: sleep 30s
