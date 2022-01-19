@@ -1,0 +1,97 @@
+runtime:
+  metricSinks:
+    prometheusScrapingEndpoint:
+      metricUnavailableValue: -1
+      enableMetricTimestamps: true # true by default
+      baseUriPath: /scrape
+# metricsConfiguration:
+#   absolutePath: /config/metrics-declaration.yaml
+azureMetadata:
+  resourceGroupName: promitor-testing-infrastructure-europe
+# metricDefaults:
+#   aggregation:
+#     interval: 00:05:00
+#   limit: 10
+#   labels:
+#     geo: china
+#     environment: dev
+#   scraping:
+#     # Every minute
+#     schedule: "0 * * ? * *"
+metrics:
+  - name: promitor_demo_documentation_availability
+    description: "Availabiliy of our documentation"
+    resourceType: Generic
+    azureMetricConfiguration:
+      metricName: availabilityResults/availabilityPercentage
+      aggregation:
+        type: Average
+    resources:
+    - resourceUri: microsoft.insights/components/promitor-testing-resource-eu-telemetry
+      filter: availabilityResult/name eq 'Documentation'
+  - name: azure_logic_apps_failed_run
+    description: "Total amount of failed runs for Azure Logic Apps"
+    resourceType: LogicApp
+    azureMetricConfiguration:
+      metricName: RunsFailed
+      aggregation:
+        type: Total
+    resources:
+      - workflowName: promitor-testing-resource-eu-workflow-eu-1
+  - name: promitor_demo_servicebus_messagecount_discovered
+    description: "Average percentage of memory usage on an Azure App Plan"
+    resourceType: ServiceBusNamespace
+    labels:
+      geo: europe
+      app: promitor
+    azureMetricConfiguration:
+      metricName: ActiveMessages
+      aggregation:
+        type: Average
+    resources:
+      - namespace: promitor-testing-resource-eu-messaging
+  - name: promitor_demo_servicebus_messagecount_limited
+    description: "Average percentage of memory usage on an Azure App Plan"
+    resourceType: ServiceBusNamespace
+    labels:
+      geo: europe
+      app: promitor
+    azureMetricConfiguration:
+      limit: 5
+      metricName: ActiveMessages
+      aggregation:
+        type: Average
+    resources:
+      - namespace: promitor-testing-resource-eu-messaging
+  - name: promitor_demo_automation_job_count
+    description: "Amount of jobs per Azure Automation account"
+    resourceType: AutomationAccount
+    azureMetricConfiguration:
+      metricName: TotalJob
+      aggregation:
+        type: Total
+    resources:
+      - accountName: promitor-testing-resource-eu-automation-1
+  - name: promitor_demo_automation_update_deployment_runs
+    description: "Amount of jobs per Azure Automation account"
+    resourceType: AutomationAccount
+    azureMetricConfiguration:
+      metricName: TotalUpdateDeploymentRuns
+      aggregation:
+        type: Total
+    resources:
+      - accountName: promitor-testing-resource-eu-automation-1
+  - name: promitor_demo_application_insights_availability
+    description: "Availability (%) of promitor.io measured in Azure Application Insights"
+    resourceType: ApplicationInsights
+    azureMetricConfiguration:
+      metricName: availabilityResults/availabilityPercentage
+      aggregation:
+        type: Average
+    resources:
+      # Application Insights with data in the service itself (classic, deprecated)
+    - name: promitor-automation-data-generation-we-telemetry-classic
+      resourceGroupName: promitor-automation-data-generation
+      # Application Insights with data in Log Analytics
+    - name: promitor-automation-data-generation-we-telemetry
+      resourceGroupName: promitor-automation-data-generation
