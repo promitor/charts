@@ -6,7 +6,7 @@ Official Helm chart repository for Promitor.
 
 ## Documentation
 
-All documentation is available on [promitor.io](https://promitor.io)
+All documentation is available on [docs.promitor.io](https://docs.promitor.io)
 
 ## Support
 
