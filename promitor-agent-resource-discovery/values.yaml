@@ -71,6 +71,14 @@ resourceDiscoveryGroups: []
 #       - northeurope
 #       - westeurope
 
+deployment:
+  extraEnv: []
+  # - name: AZURE_STORAGE_QUEUE_SAS_TOKEN
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: azure-storage-queue
+  #       key: sas-token
+
 secrets:
   # To use your own secret, set createSecret to false and define the name/keys that your secret uses
   createSecret: true

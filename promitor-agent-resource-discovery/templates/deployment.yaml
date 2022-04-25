@@ -56,14 +56,19 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-        {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey}}
+        {{- if or (or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey) .Values.deployment.extraEnv }}
           env:
+        {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey}}
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
               secretKeyRef:
                   name: {{ template "promitor-agent-resource-discovery.secretname" . }}
                   key: {{ .Values.secrets.appKeySecret }}
-        {{- end}}
+        {{- end }}
+        {{- if .Values.deployment.extraEnv }}
+{{ toYaml .Values.deployment.extraEnv | indent 12 }}
+        {{- end }}
+        {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           volumeMounts:
