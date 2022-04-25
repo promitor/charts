@@ -118,6 +118,7 @@ secrets:
   secretName: ""
   appKeySecret: azure-app-key
   atlassianStatuspageApiKey: atlassian-statuspage-apikey
+  extra: {}
 
 service:
   port: 8888
