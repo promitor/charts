@@ -72,12 +72,13 @@ resourceDiscoveryGroups: []
 #       - westeurope
 
 deployment:
-  extraEnv: []
-  # - name: AZURE_STORAGE_QUEUE_SAS_TOKEN
-  #   valueFrom:
-  #     secretKeyRef:
-  #       name: promitor-agent-resource-discovery
-  #       key: azure-storage-queue-sas-token
+  env:
+    extra: []
+    # - name: AZURE_STORAGE_QUEUE_SAS_TOKEN
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: promitor-agent-resource-discovery
+    #       key: azure-storage-queue-sas-token
 
 secrets:
   # To use your own secret, set createSecret to false and define the name/keys that your secret uses

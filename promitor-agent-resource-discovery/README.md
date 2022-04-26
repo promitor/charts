@@ -123,7 +123,7 @@ their default values.
 | `service.loadbalancer.azure.exposeInternally`  | To restrict access to Promitor by exposing it through an internal load balancer. This setting is specific to Azure Kubernetes Service ([docs](https://docs.microsoft.com/en-us/azure/aks/internal-lb)) | `false`            |
 | `service.port`  | Port on service for other pods to talk to | `8889`            |
 | `service.targetPort`  | Port on container to serve traffic | `88`            |
-| `deployment.extraEnv`  | Add extra environment variables to the promitor deployment | `[]` |
+| `deployment.env.extra`  | Add extra environment variables to the promitor deployment | `[]` |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
 `helm install`. For example:
