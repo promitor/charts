@@ -74,8 +74,9 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
+  {{- if or (or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey (eq .Values.secrets.createSecret false)) (or (.Values.metricSinks.atlassianStatuspage.apiKey) (and (eq .Values.metricSinks.atlassianStatuspage.enabled true) (eq .Values.secrets.createSecret false))) .Values.deployment.env.extra }}
           env:
-  {{- if or (or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey) (eq .Values.secrets.createSecret false) }}
+  {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey (eq .Values.secrets.createSecret false) }}
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
               secretKeyRef:
@@ -88,6 +89,10 @@ spec:
               secretKeyRef:
                   name: {{ template "promitor-agent-scraper.secretname" . }}
                   key: {{ .Values.secrets.atlassianStatuspageApiKey }}
+  {{- end }}
+  {{- if .Values.deployment.env.extra }}
+{{ toYaml .Values.deployment.env.extra | indent 12 }}
+  {{- end }}
   {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}

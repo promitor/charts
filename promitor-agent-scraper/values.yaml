@@ -104,12 +104,22 @@ metrics: []
 #       - namespace: promitor-messaging
 #         queueName: orders
 
+deployment:
+  env:
+    extra: []
+    # - name: AZURE_STORAGE_QUEUE_SAS_TOKEN
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: azure-storage-queue
+    #       key: sas-token
+
 secrets:
   # To use your own secret, set createSecret to false and define the name/keys that your secret uses
   createSecret: true
   secretName: ""
   appKeySecret: azure-app-key
   atlassianStatuspageApiKey: atlassian-statuspage-apikey
+  extra: {}
 
 service:
   port: 8888
