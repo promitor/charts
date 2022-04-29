@@ -91,7 +91,7 @@ spec:
                   key: {{ .Values.secrets.atlassianStatuspageApiKey }}
   {{- end }}
   {{- if .Values.deployment.env.extra }}
-{{ toYaml .Values.deployment.env.extra | indent 12 }}
+{{ toYaml .Values.deployment.env.extra | indent 10 }}
   {{- end }}
   {{- end }}
           resources:
