@@ -58,7 +58,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Values.secrets.createSecret -}}
 {{ template "promitor-agent-resource-discovery.fullname" . }}
 {{- else -}}
-{{- printf "%s" .Values.secrets.secretName -}}
+{{- printf "%s" (required "'.secrets.secretName' is required" .Values.secrets.secretName) -}}
 {{- end -}}
 {{- end -}}
 
