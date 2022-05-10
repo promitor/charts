@@ -56,9 +56,9 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-        {{- if or (or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey) .Values.deployment.env.extra }}
+  {{- if or (or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey (eq .Values.secrets.createSecret false)) (or (.Values.metricSinks.atlassianStatuspage.apiKey) (and (eq .Values.metricSinks.atlassianStatuspage.enabled true) (eq .Values.secrets.createSecret false))) .Values.deployment.env.extra }}
           env:
-        {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey (eq .Values.secrets.createSecret false) }}
+  {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey (eq .Values.secrets.createSecret false) }}
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
               secretKeyRef:
