@@ -58,7 +58,7 @@ spec:
               protocol: TCP
         {{- if or (or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey) .Values.deployment.env.extra }}
           env:
-        {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey}}
+        {{- if or .Values.azureAuthentication.identity.key .Values.azureAuthentication.appKey (eq .Values.secrets.createSecret false) }}
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
               secretKeyRef:
