@@ -116,7 +116,8 @@ their default values.
 | `extraVolumes`                          | Pass extra volumes to the promitor deployment                            | `[]`
 | `resources`  | Pod resource requests & limits |    `{}`    |
 | `secrets.createSecret`  | Indication if you want to bring your own secret level of logging | `true`            |   |
-| `secrets.appKeySecret`  | Name of the secret for Azure AD identity secret | `azure-app-key`            |
+| `secrets.secretName`  | Name of the secret for Azure AD identity secret  | `""`            |
+| `secrets.appKeySecret`  | Name of the secret key for Azure AD identity secret | `azure-app-key`            |
 | `secrets.extra`  | Add extra secrets | `{}` |
 | `service.loadbalancer.enabled`  | Indication whether or not to expose service externally through a load balancer | `false`            |
 | `service.loadbalancer.azure.dnsPrefix`  | Prefix for DNS name to expose the service on using `<name>.<location>.cloudapp.azure.com` format. This setting is specific to Azure Kubernetes Service ([docs](https://docs.microsoft.com/en-us/azure/aks/static-ip#apply-a-dns-label-to-the-service)) | ``            |
