@@ -141,7 +141,8 @@ their default values.
 | `extraVolumes`                          | Pass extra volumes to the promitor deployment                            | `[]`
 | `resources`  | Pod resource requests & limits |    `{}`    |
 | `secrets.createSecret`  | Indication if you want to bring your own secret level of logging | `true`            |
-| `secrets.appKeySecret`  | Name of the secret for Azure AD identity secret | `azure-app-key`            |
+| `secrets.secretName`  | Name of the Kubernetes secret containing the Azure AD identity password | `""`            |
+| `secrets.appKeySecret`  | Name of the key in the Kubernetes secret with the Azure AD identity password | `azure-app-key`            |
 | `secrets.extra`  | Add extra secrets | `{}` |
 | `service.port`  | Port on service for other pods to talk to | `8888`            |
 | `service.targetPort`  | Port on container to serve traffic | `5000`            |
