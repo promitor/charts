@@ -1,6 +1,6 @@
 apiVersion: v2
-version: 2.7.4
-appVersion: 2.6.1
+version: 2.8.0
+appVersion: 2.7.0
 type: application
 name: promitor-agent-scraper
 description: Promitor, bringing Azure Monitor metrics where you need them.
