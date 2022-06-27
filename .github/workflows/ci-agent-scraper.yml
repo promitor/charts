@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Helm install
-      uses: Azure/setup-helm@v1
+      uses: Azure/setup-helm@v3
 
     - name: Lint Promitor Scraper Helm chart
       run: helm lint promitor-agent-scraper
@@ -52,7 +52,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Helm install
-      uses: Azure/setup-helm@v1
+      uses: Azure/setup-helm@v3
 
     - name: Download Metrics configuration
       run: wget https://raw.githubusercontent.com/tomkerkhove/promitor/master/config/promitor/scraper/metrics.yaml
