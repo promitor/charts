@@ -7,7 +7,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
-  repository: containers.promitor.io/tomkerkhove/promitor-agent-scraper
+  repository: ghcr.io/tomkerkhove/promitor-agent-scraper-testing:otel-sink
   pullPolicy: Always
   pullSecrets: []
   tag:
