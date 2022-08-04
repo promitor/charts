@@ -30,6 +30,10 @@ data:
   {{- if .Values.metricSinks.statsd.port }}
           port: {{ .Values.metricSinks.statsd.port | quote }}
   {{- end }}
+  {{- if .Values.metricSinks.openTelemetryCollector.enabled }}
+        openTelemetryCollector:
+          collectorUri: {{ .Values.metricSinks.openTelemetryCollector.collectorUri | quote }}
+  {{- end }}
   {{- if .Values.metricSinks.statsd.metricPrefix }}
           metricPrefix: {{ .Values.metricSinks.statsd.metricPrefix | quote }}
   {{- end }}
