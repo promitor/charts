@@ -79,6 +79,7 @@ data:
           history:
             startingFromInHours: {{ .Values.azureMonitor.integration.history.startingFromInHours }}
   {{- end }}
+  {{- end }}
   metrics-declaration.yaml: |-
     version: v1
     azureMetadata:
