@@ -107,10 +107,10 @@ metrics: []
 azureMonitor:
   logging:
     enabled: false
-    logLevel: 
+    logLevel:
   integration:
     history:
-      startingFromInHours: 
+      startingFromInHours:
 
 deployment:
   env:
