@@ -107,6 +107,9 @@ their default values.
 | `metricDefaults.aggregation.interval`  | Default interval which defines over what period measurements of a metric should be aggregated | `00:05:00`            |
 | `metricDefaults.scraping.schedule`  | Cron expression that controls the fequency in which all the configured metrics will be scraped from Azure Monitor | `*/5 * * * *`            |
 | `metrics`  | List of metrics to scrape configured following the [metric declaration docs](https://promitor.io/configuration/metrics/) |        |
+| `azureMonitor.logging.enabled`  | Indication whether or not to provide logs on the integration with Azure Monitor and its APIs | `false`            |
+| `azureMonitor.logging.logLevel`  | Minimum level of logging for Azure Monitor interactions | N/A |
+| `azureMonitor.integration.history.startingFromInHours`  | Defines the amount of hours Promitor will use to define the starting point of the time window used for metric queries. | N/A            |
 | `rbac.create` | If true, create & use RBAC resources | `true` |
 | `rbac.podSecurityPolicyEnabled` | Create pod security policy resources | `false` |
 | `rbac.serviceAccount.create` | Create service account resource | `true` |

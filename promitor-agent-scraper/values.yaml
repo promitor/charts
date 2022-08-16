@@ -104,6 +104,14 @@ metrics: []
 #       - namespace: promitor-messaging
 #         queueName: orders
 
+azureMonitor:
+  logging:
+    enabled: false
+    logLevel: 
+  integration:
+    history:
+      startingFromInHours: 
+
 deployment:
   env:
     extra: []
