@@ -28,6 +28,9 @@ metricSinks:
     systemMetricMapping: []
     # - id: <atlassian-statuspage-system-metric-id>
     #   promitorMetricName: <promitor-metric-name>
+  openTelemetryCollector:
+    enabled: false
+    collectorUri: ""
   prometheusScrapingEndpoint:
     enabled: true
     baseUriPath: /metrics

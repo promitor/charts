@@ -74,6 +74,8 @@ their default values.
 | `metricSinks.atlassianStatuspage.pageId`  | Id of Atlassian Statuspage page |             |
 | `metricSinks.atlassianStatuspage.apiKey`  | API key of Atlassian Statuspage page |             |
 | `metricSinks.atlassianStatuspage.systemMetricMapping`  | Mapping of the Atlassian Statuspage system metrics and Promitor metrics. Learn how to configure it [below](#atlassian-statuspage).| None            |
+| `metricSinks.openTelemetryCollector.enabled`  | Indication whether or not metrics should be pushed to an OpenTelemetry Collector | `false`|
+| `metricSinks.openTelemetryCollector.collectorUri`  | Uri of the OpenTelemetry Collector to push metrics to where the scraping endpoint for Prometheus is being exposed | ``            |
 | `metricSinks.prometheusScrapingEndpoint.enabled`  | Indication whether or not metrics should be exposed as a Prometheus scraping endpoint | `true`|
 | `metricSinks.prometheusScrapingEndpoint.baseUriPath`  | Path where the scraping endpoint for Prometheus is being exposed | `/metrics`            |
 | `metricSinks.prometheusScrapingEndpoint.enableMetricTimestamps`  | Indication whether or not to include timestamp | `true`            |
