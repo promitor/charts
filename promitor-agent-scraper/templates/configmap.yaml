@@ -34,6 +34,10 @@ data:
           metricPrefix: {{ .Values.metricSinks.statsd.metricPrefix | quote }}
   {{- end }}
   {{- end }}
+  {{- if .Values.metricSinks.openTelemetryCollector.enabled }}
+        openTelemetryCollector:
+          collectorUri: {{ .Values.metricSinks.openTelemetryCollector.collectorUri | quote }}
+  {{- end }}
   {{- if .Values.metricSinks.prometheusScrapingEndpoint.enabled }}
         prometheusScrapingEndpoint:
           metricUnavailableValue: {{ .Values.metricSinks.prometheusScrapingEndpoint.metricUnavailableValue | quote }}
