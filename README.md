@@ -8,7 +8,10 @@ Official Helm chart repository for Promitor.
 
 All documentation is available on [docs.promitor.io](https://docs.promitor.io)
 
-## Support
+## Supportaasdsd
+
+
+asd
 
 Learn more about our support options [here](https://github.com/tomkerkhove/promitor/blob/master/SUPPORT.md).
 
