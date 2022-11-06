@@ -60,7 +60,6 @@ their default values.
 | `image.repository`  | Repository which provides the image | `containers.promitor.io/tomkerkhove/promitor-agent-resource-discovery` |
 | `image.tag`  | Tag of image to use | None, chart app version is used by default            |
 | `image.pullPolicy`  | Policy to pull image | `Always`            |
-| `image.pullSecrets`  | ImagePullSecrets for the pod | `[]`            |
 | `azureLandscape.cloud`  | Azure Cloud to discover resources in. Options are `Global` (default), `China`, `UsGov` & `Germany` | `Global`            |
 | `azureLandscape.tenantId`  | Id of Azure tenant to discover resources in |             |
 | `azureLandscape.subscriptions`  | List of Azure subscription ids to discover resources in | `[]`            |

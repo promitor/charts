@@ -74,8 +74,6 @@ their default values.
 | `metricSinks.atlassianStatuspage.pageId`  | Id of Atlassian Statuspage page |             |
 | `metricSinks.atlassianStatuspage.apiKey`  | API key of Atlassian Statuspage page |             |
 | `metricSinks.atlassianStatuspage.systemMetricMapping`  | Mapping of the Atlassian Statuspage system metrics and Promitor metrics. Learn how to configure it [below](#atlassian-statuspage).| None            |
-| `metricSinks.openTelemetryCollector.enabled`  | Indication whether or not metrics should be pushed to an OpenTelemetry Collector | `false`|
-| `metricSinks.openTelemetryCollector.collectorUri`  | Uri of the OpenTelemetry Collector to push metrics to where the scraping endpoint for Prometheus is being exposed | ``            |
 | `metricSinks.prometheusScrapingEndpoint.enabled`  | Indication whether or not metrics should be exposed as a Prometheus scraping endpoint | `true`|
 | `metricSinks.prometheusScrapingEndpoint.baseUriPath`  | Path where the scraping endpoint for Prometheus is being exposed | `/metrics`            |
 | `metricSinks.prometheusScrapingEndpoint.enableMetricTimestamps`  | Indication whether or not to include timestamp | `true`            |
@@ -109,9 +107,6 @@ their default values.
 | `metricDefaults.aggregation.interval`  | Default interval which defines over what period measurements of a metric should be aggregated | `00:05:00`            |
 | `metricDefaults.scraping.schedule`  | Cron expression that controls the fequency in which all the configured metrics will be scraped from Azure Monitor | `*/5 * * * *`            |
 | `metrics`  | List of metrics to scrape configured following the [metric declaration docs](https://promitor.io/configuration/metrics/) |        |
-| `azureMonitor.logging.enabled`  | Indication whether or not to provide logs on the integration with Azure Monitor and its APIs | `false`            |
-| `azureMonitor.logging.logLevel`  | Minimum level of logging for Azure Monitor interactions | N/A |
-| `azureMonitor.integration.history.startingFromInHours`  | Defines the amount of hours Promitor will use to define the starting point of the time window used for metric queries. | N/A            |
 | `rbac.create` | If true, create & use RBAC resources | `true` |
 | `rbac.podSecurityPolicyEnabled` | Create pod security policy resources | `false` |
 | `rbac.serviceAccount.create` | Create service account resource | `true` |

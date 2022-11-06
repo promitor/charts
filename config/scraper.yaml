@@ -1,9 +1,10 @@
 runtime:
   metricSinks:
-    prometheusScrapingEndpoint:
-      metricUnavailableValue: -1
-      enableMetricTimestamps: true # true by default
-      baseUriPath: /scrape
+    # prometheusScrapingEndpoint:
+    #   metricUnavailableValue: -1
+    #   enableMetricTimestamps: true # true by default
+    #   baseUriPath: /scrape
+    mdm: []
 # metricsConfiguration:
 #   absolutePath: /config/metrics-declaration.yaml
 azureMetadata:
