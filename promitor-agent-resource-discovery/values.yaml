@@ -9,16 +9,18 @@ fullnameOverride: ""
 image:
   repository: containers.promitor.io/tomkerkhove/promitor-agent-resource-discovery
   pullPolicy: Always
+  pullSecrets: []
   tag:
 
 azureAuthentication:
   appId: "" # [Deprecated] Prefer identity.id
   appKey: "" # [Deprecated] Prefer identity.key
   mode: "ServicePrincipal"
-  secretMountPath: "/vault-agent"
   identity:
     id: ""
     key: ""
+    appKeySecretFilePath: "" # The path to the secret file
+    appKeySecretFileName: "" # The file that contains the secret value
     binding: ""
 
 cache:

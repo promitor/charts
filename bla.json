@@ -1,0 +1,15 @@
+{
+"$schema":"https://ev2schema.azure.net/schemas/2020-01-01/scopeBindings.json",
+"contentVersion":"1.0.0.0",
+"scopeBindings":[
+{
+"scopeTagName":"SqlScriptsPath",
+"bindings":[
+{
+"find":"__SQL_SCRIPTS_PATH__",
+"replaceWith":"$(sqlScriptsPath)"
+}
+]
+}
+]
+}

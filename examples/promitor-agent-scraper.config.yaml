@@ -6,23 +6,22 @@ metricSinks:
     metricUnavailableValue: -1
     baseUriPath: /scrape
     enableServiceDiscovery: true
-  # atlassianStatuspage:
-  #   pageId: y79z9b78ybgs
-  #   apiKey: <hidden>
-  #   systemMetricMapping:
-  #   - id: nfkgnrwpn545
-  #     promitorMetricName: promitor_demo_appplan_percentage_cpu
+  atlassianStatuspage:
+    pageId: y79z9b78ybgs
+    apiKey: <hidden>
+    systemMetricMapping:
+    - id: nfkgnrwpn545
+      promitorMetricName: promitor_demo_appplan_percentage_cpu
 azureMetadata:
-  tenantId: 72f988bf-86f1-41af-91ab-2d7cd011db47
-  subscriptionId: c5d1c552-a815-4fc8-b12d-ab444e3225b1
-  #resourceGroupName: promitor
-mdm: []
+  tenantId: c8819874-9e56-4e3f-b1a8-1c0325138f27
+  subscriptionId: 0f9d7fea-99e8-4768-8672-06a28514f77e
+  resourceGroupName: promitor
 metricDefaults:
   aggregation:
     interval: 00:05:00
-  limit: 10
   scraping:
-    schedule: "* * * * *"
+    # Every minute
+    schedule: "0 * * ? * *"
 metrics:
   - name: promitor_demo_appplan_percentage_cpu
     description: "Average percentage of memory usage on an Azure App Plan"
@@ -173,6 +172,6 @@ service:
 telemetry:
   defaultLogLevel: information
 resourceDiscovery:
-  enabled: true
-  host: "mgmt-promitor"
+  host: promitor-agent-resource-discovery
   port: 8889
+  enabled: true

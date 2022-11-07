@@ -4,7 +4,6 @@ metadata:
   name: {{ template "promitor-agent-scraper.name" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    aadpodidbinding: "cluster-identity"
     {{- include "promitor-agent-scraper.labels" . | nindent 4 }}
 {{- if semverCompare "<1.19-0" .Capabilities.KubeVersion.Version }}
   annotations:
@@ -23,7 +22,6 @@ spec:
   template:
     metadata:
       labels:
-        aadpodidbinding: "cluster-identity"
         {{- include "promitor-agent-scraper.selectorLabels" . | nindent 8 }}
       {{- if .Values.podLabels }}
       {{- toYaml .Values.podLabels | nindent 8 }}
@@ -68,194 +66,7 @@ spec:
       tolerations:
         {{- toYaml .Values.tolerations | nindent 6 }}
       {{- end }}
-      initContainers:
-        - name: keyvault-agent
-          image: "{{ .Values.image.acrUrl }}/{{ .Values.keyvault.acskeyvaultagent.image.name }}:{{ .Values.keyvault.acskeyvaultagent.image.tag }}"
-          env:
-          - name: DOWNLOAD_CA_CERTIFICATES
-            value: {{ .Values.keyvault.downloadCaCertificates | quote }}
-          - name: VAULT_BASE_URL
-            {{- if .Values.keyvault.vaultUrl }}
-            value: {{ .Values.keyvault.vaultUrl }}
-            {{- else }}
-            value: "https://{{ .Values.keyvault.vaultName }}.{{ .Values.keyvault.vaultUrlSuffix }}"
-            {{- end }}
-          - name: SECRETS_FOLDER
-            value: {{ .Values.keyvault.mountPath }}
-          - name: USE_MSI
-            value: "true"
-          {{- if .Values.airgap }}
-          - name: REQUESTS_CA_BUNDLE
-            value: {{ .Values.cacrtHostPath }}
-          {{- end }}
-          - name: SECRETS_KEYS
-            {{- $secrets := list }}
-            {{- if .Values.mdm.enabled }}
-            {{- $secrets = append $secrets .Values.mdm.secrets }}
-            {{- end }}
-            {{- if .Values.highThroughputPipeline.logs.enabled }}
-            {{- $secrets = append $secrets .Values.highThroughputPipeline.logs.mdsd.secrets }}
-            {{- end }}
-            {{- if .Values.keyvault.enabled }}
-            {{- $keyvaultSecrets := required "keyvault.secrets is missing" .Values.keyvault.secrets }}
-            {{- if kindIs "map" $keyvaultSecrets }}
-            {{- $secrets = append $secrets (values $keyvaultSecrets | join ";") }}
-            {{- else if kindIs "slice" $keyvaultSecrets }}
-            {{- $secrets = append $secrets ($keyvaultSecrets | join ";") }}
-            {{- else }}
-            {{- $secrets = append $secrets $keyvaultSecrets }}
-            {{- end }}
-            {{- end }}
-            value: {{ $secrets | join ";" }}
-            {{- if .Values.keyvault.azureAuthorityServer }}
-          - name: AZURE_AUTHORITY_SERVER
-            value: {{ .Values.keyvault.azureAuthorityServer }}
-            {{- end }}
-          - name: TIMEOUT
-            value: {{ .Values.keyvault.timeout | quote }}
-            {{- if .Values.keyvault.vaultResourceName }}
-          - name: VAULT_RESOURCE_NAME
-            value: {{ .Values.keyvault.vaultResourceName }}
-            {{- end }}
-          {{- range $key := .Values.keyvault.secretsBindedWithCa }}
-          - name: "{{ upper $key }}_DOWNLOAD_CA_CERTIFICATE"
-            value: "true"
-          {{- end }}
-          volumeMounts:
-          - name: {{ .Values.keyvault.volumeName }}
-            mountPath: {{ .Values.keyvault.mountPath }}
-          {{- if .Values.airgap }}
-          - name: sp-host
-            mountPath: {{ .Values.spHostPath }}
-            readOnly: true
-          - name: cacrt-host
-            mountPath: {{ .Values.cacrtHostPath }}
-            readOnly: true
-          {{- end }}
-      {{- if .Values.extraKeyvaults }}
-        {{- range $index, $extraKeyVault := .Values.extraKeyvaults }}
-          {{- if .enabled }}
-        - name: keyvault-agent-{{ $index }}
-          image: "{{ $.Values.image.acrUrl }}/{{ $.Values.keyvault.acskeyvaultagent.image.name }}:{{ $.Values.keyvault.acskeyvaultagent.image.tag }}"
-          env:
-          - name: DOWNLOAD_CA_CERTIFICATES
-            value: {{ .downloadCaCertificates | default false | quote }}
-          - name: VAULT_BASE_URL
-            {{- if .vaultUrl }}
-            value: {{ .vaultUrl }}
-            {{- else if .vaultName }}
-            value: "https://{{ .vaultName }}.{{ $.Values.keyvault.vaultUrlSuffix }}"
-            {{- else }}
-            {{ fail (printf "extraKeyvaults.%s.vaultUrl OR extraKeyvaults.%s.vaultName must be provided" $index $index) }}
-            {{- end }}
-          - name: SECRETS_FOLDER
-            value: {{ $.Values.keyvault.mountPath }}
-          - name: USE_MSI
-            value: "true"
-          {{- if $.Values.airgap }}
-          - name: REQUESTS_CA_BUNDLE
-            value: {{ $.Values.cacrtHostPath }}
-          {{- end }}
-          - name: SECRETS_KEYS
-            {{- $extraSecrets := list }}
-            {{- $extraKeyvaultSecrets := required (printf "extraKeyvaults.%s.secrets is missing" $index) .secrets }}
-            {{- if kindIs "map" $extraKeyvaultSecrets }}
-            {{- $extraSecrets = append $extraSecrets (values $extraKeyvaultSecrets | join ";") }}
-            {{- else if kindIs "slice" $extraKeyvaultSecrets }}
-            {{- $extraSecrets = append $extraSecrets ($extraKeyvaultSecrets | join ";") }}
-            {{- else }}
-            {{- $extraSecrets = append $extraSecrets $extraKeyvaultSecrets }}
-            {{- end }}
-            value: {{ $extraSecrets | join ";" }}  
-            {{- if $.Values.keyvault.azureAuthorityServer }}
-          - name: AZURE_AUTHORITY_SERVER
-            value: {{ $.Values.keyvault.azureAuthorityServer }}
-            {{- end }}
-          - name: TIMEOUT
-            value: {{ $.Values.keyvault.timeout | quote }}
-            {{- if $.Values.keyvault.vaultResourceName}}
-          - name: VAULT_RESOURCE_NAME
-            value: {{ $.Values.keyvault.vaultResourceName }}
-            {{- end }}
-          volumeMounts:
-          - name: {{ $.Values.keyvault.volumeName }}
-            mountPath: {{ $.Values.keyvault.mountPath }}
-          {{- if $.Values.airgap }}
-          - name: sp-host
-            mountPath: {{ $.Values.spHostPath }}
-            readOnly: true
-          - name: cacrt-host
-            mountPath: {{ $.Values.cacrtHostPath }}
-            readOnly: true
-            {{- end }}
-          {{- end }}
-        {{- end }}
-      {{- end }}
       containers:
-        - name: mdm
-          command:
-          - /start_metricsextension.sh
-          env:
-          - name: MDM_INPUT
-            value: {{ required "missing mdm protocol" .Values.mdm.protocol }}
-          - name: MDM_ACCOUNT
-            value: {{ required "missing mdm account name" .Values.mdm.account }}
-          {{- if .Values.mdm.infraMetricsEnrichment }}
-          - name: CONFIG_OVERRIDES_FILE
-            value: /mdm_config_override/mdm-config-overrides.json
-          {{- end }}  
-          image: "{{ required "acrUrl is missing" .Values.mdm.acrUrl }}/{{ required "MDM image name (mdm.imageName) is missing" .Values.mdm.imageName }}:{{ required "MDM image tag (mdm.imageTag) is missing" .Values.mdm.imageTag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          livenessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 15
-            periodSeconds: 20
-            successThreshold: 1
-            tcpSocket:
-              port: {{ required "missing mdm port" .Values.mdm.port }}
-            timeoutSeconds: 1
-          readinessProbe:
-            exec:
-              command:
-              - bash
-              - -c
-              - 'if ! [[ "$(ls -A /tmp/geneva_mdm/)" ]] || ! [[ "$(nc -vz localhost {{ required "missing mdm port" .Values.mdm.port }} 2>&1)" =~ .*open$ ]]; then exit 1; fi'
-            failureThreshold: 3
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            successThreshold: 1
-            timeoutSeconds: 1
-          lifecycle:
-            postStart:
-              exec:
-                command:
-                - bash
-                - -c
-                - until [[ "$(ls -A /tmp/geneva_mdm/)" ]] && [[ "$(nc -vz localhost {{ required "missing mdm port" .Values.mdm.port }} 2>&1)" =~ .*open$ ]]; do sleep 1; done
-            {{- if or .Values.highThroughputPipeline.metrics.enabled .Values.mdm.appProcessName }}
-            {{- $processToMonitor := .Values.highThroughputPipeline.metrics.enabled | ternary "WDATP.Infra.EventsReader" .Values.mdm.appProcessName -}}
-            {{- /*
-            use preStop hook to add delay before SIGTERM is sent to mdm container, to enable 'flushing' of the application metrics from mdm-collector
-            */}}
-            preStop:
-              exec:
-                command:
-                - bash
-                - -c
-                - i=0; while [ $((i++)) -le 40 ] && pgrep -ifa {{ $processToMonitor | quote }} > /dev/null 2>&1; do sleep 1; done
-            {{- end }}
-          resources:
-{{ .Values.mdm.resources | toYaml | indent 12 }}
-          volumeMounts:
-          - name: {{ .Values.keyvault.volumeName }}
-            mountPath: /tmp/geneva_mdm/
-            readOnly: true
-            subPath: certs_keys
-          {{- if .Values.mdm.infraMetricsEnrichment }}
-          - name: mdm-config-overrides
-            mountPath: /mdm_config_override/
-            readOnly: true
-          {{- end }}
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -288,9 +99,7 @@ spec:
           {{- if .Values.containerSecurityContext.enabled }}
           securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
           {{- end }}
-          volumeMounts:           
-          - name: {{ .Values.keyvault.volumeName }}
-            mountPath: {{ .Values.keyvault.mountPath }}
+          volumeMounts:
           - name: config-volume-{{ template "promitor-agent-scraper.name" . }}
             mountPath: /config/
           {{- if and .Values.containerSecurityContext.enabled .Values.containerSecurityContext.readOnlyRootFilesystem }}
@@ -329,9 +138,6 @@ spec:
       affinity: {{- tpl (toYaml .) $ | nindent 8 }}
       {{- end }}
       volumes:
-        - name: {{ .Values.keyvault.volumeName }}
-          emptyDir:
-            medium: Memory  # we want the secrets to reside only in-memory
         - name: config-volume-{{ template "promitor-agent-scraper.name" . }}
           configMap:
             name: config-map-{{ template "promitor-agent-scraper.name" . }}
