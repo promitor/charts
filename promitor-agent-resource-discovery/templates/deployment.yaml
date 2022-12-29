@@ -66,8 +66,8 @@ spec:
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
               secretKeyRef:
-                  name: {{ template "promitor-agent-resource-discovery.secretname" . }}
-                  key: {{ .Values.secrets.appKeySecret }}
+                name: {{ template "promitor-agent-resource-discovery.secretname" . }}
+                key: {{ .Values.secrets.appKeySecret }}
         {{- end }}
         {{- if .Values.deployment.env.extra }}
 {{ toYaml .Values.deployment.env.extra | indent 10 }}
