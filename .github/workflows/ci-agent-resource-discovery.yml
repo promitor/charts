@@ -1,6 +1,10 @@
 name: Helm Chart CI - Resource Discovery Agent
 
 on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
   pull_request:
     paths:
     - '.github/workflows/ci-agent-resource-discovery.yml'
