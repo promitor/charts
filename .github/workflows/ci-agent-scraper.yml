@@ -1,6 +1,7 @@
 name: Helm Chart CI - Scraper Agent
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
     - '.github/workflows/ci-agent-scraper.yml'
