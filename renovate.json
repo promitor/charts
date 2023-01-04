@@ -16,6 +16,7 @@
   ],
   "extends": [
     "config:base",
-    "default:pinDigestsDisabled"
+    "default:pinDigestsDisabled",
+		"default:disablePrControls"
   ]
 }
