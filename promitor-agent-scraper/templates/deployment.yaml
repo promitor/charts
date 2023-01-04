@@ -80,15 +80,15 @@ spec:
           - name: PROMITOR_AUTH_APPKEY
             valueFrom:
               secretKeyRef:
-                  name: {{ template "promitor-agent-scraper.secretname" . }}
-                  key: {{ .Values.secrets.appKeySecret }}
+                name: {{ template "promitor-agent-scraper.secretname" . }}
+                key: {{ .Values.secrets.appKeySecret }}
   {{- end}}
   {{- if or (.Values.metricSinks.atlassianStatuspage.apiKey) (and (eq .Values.metricSinks.atlassianStatuspage.enabled true) (eq .Values.secrets.createSecret false)) }}
           - name: PROMITOR_ATLASSIAN_STATUSPAGE_APIKEY
             valueFrom:
               secretKeyRef:
-                  name: {{ template "promitor-agent-scraper.secretname" . }}
-                  key: {{ .Values.secrets.atlassianStatuspageApiKey }}
+                name: {{ template "promitor-agent-scraper.secretname" . }}
+                key: {{ .Values.secrets.atlassianStatuspageApiKey }}
   {{- end }}
   {{- if .Values.deployment.env.extra }}
 {{ toYaml .Values.deployment.env.extra | indent 10 }}
