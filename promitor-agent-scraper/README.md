@@ -94,6 +94,7 @@ their default values.
 | `metricSinks.statsd.metricPrefix`  | Prefix that will be added to every metric defined in the metric declaration |             |
 | `prometheusRule.enabled`          | Indication whether or not to create PrometheusRule object(s) for [Prometheus operator](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions)      | `false`                     |
 | `prometheusRule.additionalLabels` | Additional labels that can be used so prometheusRules will be discovered by Prometheus  | `{}`        |
+| `prometheusRule.interval` | Interval determines how often rules in the group are evaluated ([docs](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.RuleGroup)) | `` |
 | `prometheusRule.namespace`        | namespace where prometheusRules object should be created          |                             |
 | `prometheusRule.rules`            | [rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) to be created | `[]`
 | `telemetry.applicationInsights.enabled`  | Indication whether or not to send telemetry to Azure Application Insights | `false`            |

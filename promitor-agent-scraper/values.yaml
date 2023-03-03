@@ -55,6 +55,7 @@ prometheusRule:
   enabled: false
   namespace: ""
   additionalLabels: {}
+  interval: ""
   rules: []
     # Sample rule below. Can also use templated strings with some limitations regarding possible line length: https://github.com/go-yaml/yaml/issues/166
     # To prevent Helm from messing up the rules on fields > 80 characters you can use yaml literal style as shown below.
