@@ -91,6 +91,7 @@ their default values.
 | `rbac.serviceAccount.create` | Create service account resource | `true` |
 | `rbac.serviceAccount.name` | Service account name to use if create is false. If create is true, a name is generated using the fullname template | `promitor-resource-discovery` |
 | `rbac.serviceAccount.annotations` | Service account annotations| `{}` |
+| `rbac.serviceAccount.automountServiceAccountToken` | If service account token should be mounted inside pod| `false` |
 | `health.readiness.enabled`  | Indication if readiness probes should be used | `true`            |   |
 | `health.readiness.verifyDependencies`  | Indication if readiness probes should verify if Promitor can interat with external dependencies. Do note that this will contact all dependencies which can have performance impact, cause throttling or cascading failures when consumed very often. | `false`            |   |
 | `health.readiness.delay`  | Amount of seconds to wait before probing the container to verify if it's ready | `5`            |   |
@@ -110,8 +111,10 @@ their default values.
 | `podLabels`  | Additional pod labels to include |    `{}`    |
 | `annotations` | Additional annotations to include | `{}` |
 | `priorityClassName`  | Priority class to be used by pod ([docs](https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/)) |    `""`    |
-| `securityContext.*`  | Custom security context object for pod ([docs](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)) | `{}`            |
-| `securityContext.enabled`  | Whether to include custom security context for pod or not | `false`            |
+| `securityContext.enabled`  | Whether to include custom security context for pod or not | `true` |
+| `securityContext.*`  | Custom security context object for pod ([docs](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)) | <pre>runAsGroup: 10000<br>runAsNonRoot: true<br>runAsUser: 10000<br>seccompProfile:<br>&emsp;type: RuntimeDefault</pre> |
+| `containerSecurityContext.enabled`  | Whether to include custom security context for container or not | `true` |
+| `containerSecurityContext.*`  | Custom security context object for container ([docs](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container)) | <pre>allowPrivilegeEscalation: false<br>capabilities:<br>&emsp;drop:<br>&emsp;- ALL<br>privileged: false<br>readOnlyRootFilesystem: true</pre> |
 | `tolerations` | Tolerations for pod assignment | `[]` |
 | `extraVolumeMounts`                     | Pass extra volumeMounts to the promitor container                        | `[]`                                 |
 | `extraVolumes`                          | Pass extra volumes to the promitor deployment                            | `[]`
@@ -124,7 +127,7 @@ their default values.
 | `service.loadbalancer.azure.dnsPrefix`  | Prefix for DNS name to expose the service on using `<name>.<location>.cloudapp.azure.com` format. This setting is specific to Azure Kubernetes Service ([docs](https://docs.microsoft.com/en-us/azure/aks/static-ip#apply-a-dns-label-to-the-service)) | ``            |
 | `service.loadbalancer.azure.exposeInternally`  | To restrict access to Promitor by exposing it through an internal load balancer. This setting is specific to Azure Kubernetes Service ([docs](https://docs.microsoft.com/en-us/azure/aks/internal-lb)) | `false`            |
 | `service.port`  | Port on service for other pods to talk to | `8889`            |
-| `service.targetPort`  | Port on container to serve traffic | `88`            |
+| `service.targetPort`  | Port on container to serve traffic | `5000`            |
 | `deployment.env.extra`  | Add extra environment variables to the promitor deployment | `[]` |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
