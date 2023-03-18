@@ -34,8 +34,18 @@ spec:
         {{- toYaml .Values.annotations | nindent 8 }}
         {{- end }}
     spec:
+      {{- if and .Values.rbac.create .Values.rbac.serviceAccount.create .Values.rbac.serviceAccount.automountServiceAccountToken }}
+      automountServiceAccountToken: true
+      {{- end }}
       {{- if .Values.securityContext.enabled }}
-      securityContext: {{- omit .Values.securityContext "enabled" | toYaml | nindent 8 }}
+      securityContext:
+        runAsGroup: {{ .Values.securityContext.runAsGroup }}
+        runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
+        runAsUser: {{ .Values.securityContext.runAsUser }}
+      {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.Version }}
+        seccompProfile:
+          type: {{ .Values.securityContext.seccompProfile.type }}
+      {{- end }}
       {{- end }}
       {{- if .Values.rbac.create }}
       serviceAccountName: {{ template "promitor-agent-resource-discovery.serviceaccountname" . }}
@@ -75,9 +85,16 @@ spec:
         {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+          {{- if .Values.containerSecurityContext.enabled }}
+          securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
+          {{- end }}
           volumeMounts:
           - name: config-volume-{{ template "promitor-agent-resource-discovery.name" . }}
             mountPath: /config/
+          {{- if and .Values.containerSecurityContext.enabled .Values.containerSecurityContext.readOnlyRootFilesystem }}
+          - name: tmp
+            mountPath: /tmp/
+          {{- end }}
           {{- if .Values.extraVolumeMounts }}
 {{ toYaml .Values.extraVolumeMounts | indent 10 }}
           {{- end }}
@@ -113,6 +130,10 @@ spec:
         - name: config-volume-{{ template "promitor-agent-resource-discovery.name" . }}
           configMap:
             name: config-map-{{ template "promitor-agent-resource-discovery.name" . }}
+        {{- if and .Values.containerSecurityContext.enabled .Values.containerSecurityContext.readOnlyRootFilesystem }}
+        - emptyDir: { }
+          name: tmp
+        {{- end }}
         {{- if .Values.extraVolumes }}
 {{ toYaml .Values.extraVolumes | indent 8 }}
         {{- end }}
