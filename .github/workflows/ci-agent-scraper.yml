@@ -57,7 +57,7 @@ jobs:
       working-directory: ./config
 
     - name: Create k8s ${{ matrix.kubernetesVersion }} Kind Cluster
-      uses: helm/kind-action@v1.6.0
+      uses: helm/kind-action@v1.7.0
       with:
         node_image: ${{ matrix.kindImage }}
 
