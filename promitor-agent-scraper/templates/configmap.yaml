@@ -86,6 +86,7 @@ data:
   {{- end }}
   metrics-declaration.yaml: |-
     version: v1
+    useAzureMonitorSdk: {{ .Values.useAzureMonitorSdk | default "true" | quote}}
     azureMetadata:
       tenantId: {{ .Values.azureMetadata.tenantId }}
       subscriptionId: {{ .Values.azureMetadata.subscriptionId }}

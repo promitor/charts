@@ -103,6 +103,7 @@ their default values.
 | `telemetry.containerLogs.enabled`  | Indication whether or not to send telemetry to container logs | `true`            |
 | `telemetry.containerLogs.logLevel`  | Minimum level of logging for container logs |  |
 | `telemetry.defaultLogLevel`  | Minimum level of logging for all telemetry sinks, unless specified otherwise | `Error`            |
+| `useAzureMonitorSdk`  | Whether to use the Azure Monitor SDK for scraping; alternative is the legacy Azure Management Library | `true`
 | `azureMetadata.tenantId`  | Id of Azure tenant |             |
 | `azureMetadata.subscriptionId`  | Id of Azure subscription |             |
 | `azureMetadata.resourceGroupName`  | Name of resource group | `promitor`            |
