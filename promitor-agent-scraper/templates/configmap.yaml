@@ -69,7 +69,7 @@ data:
           verbosity: {{ .Values.telemetry.containerLogs.logLevel | quote }}
   {{- end }}
         defaultVerbosity: {{ .Values.telemetry.defaultLogLevel | quote  }}
-  {{- if or .Values.azureMonitor.logging.enabled .Values.azureMonitor.integration.history.startingFromInHours }}
+  {{- if or .Values.azureMonitor.logging.enabled .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk }}
       azureMonitor:
   {{- if .Values.azureMonitor.logging.enabled }}
         logging:
@@ -80,13 +80,13 @@ data:
   {{- end }}
   {{- if .Values.azureMonitor.integration.history.startingFromInHours }}
         integration:
+          useAzureMonitorSdk: {{ .Values.azureMonitor.integration.useAzureMonitorSdk | quote}}
           history:
             startingFromInHours: {{ .Values.azureMonitor.integration.history.startingFromInHours }}
   {{- end }}
   {{- end }}
   metrics-declaration.yaml: |-
     version: v1
-    useAzureMonitorSdk: {{ .Values.useAzureMonitorSdk | default "true" | quote}}
     azureMetadata:
       tenantId: {{ .Values.azureMetadata.tenantId }}
       subscriptionId: {{ .Values.azureMetadata.subscriptionId }}
