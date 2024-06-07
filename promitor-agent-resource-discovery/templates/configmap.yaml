@@ -27,6 +27,10 @@ data:
   {{- if .Values.telemetry.applicationInsights.key }}
           instrumentationKey: {{ .Values.telemetry.applicationInsights.key | quote }}
   {{- end }}
+  {{- if .Values.azureAuthentication.identity.appKeySecretFilePath }}
+        appKeySecretFilePath: {{ .Values.azureAuthentication.identity.appKeySecretFilePath}}
+        appKeySecretName: {{ .Values.azureAuthentication.identity.appKeySecretName}}
+  {{- end }}
           isEnabled: {{ .Values.telemetry.applicationInsights.enabled | quote }}
   {{- if .Values.telemetry.applicationInsights.logLevel }}
           verbosity: {{ .Values.telemetry.applicationInsights.logLevel | quote }}

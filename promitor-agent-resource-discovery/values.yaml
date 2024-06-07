@@ -19,6 +19,8 @@ azureAuthentication:
   identity:
     id: ""
     key: ""
+    appKeySecretFilePath: "" # The path to the secret file
+    appKeySecretFileName: "" # The file that contains the secret value
     binding: ""
 
 cache:
