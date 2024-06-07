@@ -103,7 +103,6 @@ their default values.
 | `telemetry.containerLogs.enabled`  | Indication whether or not to send telemetry to container logs | `true`            |
 | `telemetry.containerLogs.logLevel`  | Minimum level of logging for container logs |  |
 | `telemetry.defaultLogLevel`  | Minimum level of logging for all telemetry sinks, unless specified otherwise | `Error`            |
-| `useAzureMonitorSdk`  | Whether to use the Azure Monitor SDK for scraping; alternative is the legacy Azure Management Library | `true`
 | `azureMetadata.tenantId`  | Id of Azure tenant |             |
 | `azureMetadata.subscriptionId`  | Id of Azure subscription |             |
 | `azureMetadata.resourceGroupName`  | Name of resource group | `promitor`            |
@@ -113,6 +112,7 @@ their default values.
 | `metrics`  | List of metrics to scrape configured following the [metric declaration docs](https://promitor.io/configuration/metrics/) |        |
 | `azureMonitor.logging.enabled`  | Indication whether or not to provide logs on the integration with Azure Monitor and its APIs | `false`            |
 | `azureMonitor.logging.logLevel`  | Minimum level of logging for Azure Monitor interactions | N/A |
+| `azureMonitor.integration.useAzureMonitorSdk`  | Whether to use the Azure Monitor SDK for scraping; alternative is the legacy Azure Management Library | `true`
 | `azureMonitor.integration.history.startingFromInHours`  | Defines the amount of hours Promitor will use to define the starting point of the time window used for metric queries. | N/A            |
 | `rbac.create` | If true, create & use RBAC resources | `true` |
 | `rbac.podSecurityPolicyEnabled` | Create pod security policy resources | `false` |
