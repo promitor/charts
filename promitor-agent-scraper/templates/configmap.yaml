@@ -78,8 +78,14 @@ data:
   {{- end }}
           isEnabled: {{ .Values.azureMonitor.logging.enabled | quote }}
   {{- end }}
-  {{- if .Values.azureMonitor.integration.history.startingFromInHours }}
+  {{- if or .Values.azureMonitor.logging.enabled .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk}}
         integration:
+          {{- if .Values.azureMonitor.integration.metricsBatching.enabled }}
+          metricsBatching:
+            enabled: true
+            maxBatchSize: {{ .Values.azureMonitor.integration.metricsBatching.maxBatchSize }}
+            azureRegion: {{ .Values.azureMonitor.integration.metricsBatching.azureRegion }}
+          {{- end }}
           useAzureMonitorSdk: {{ .Values.azureMonitor.integration.useAzureMonitorSdk | quote}}
           history:
             startingFromInHours: {{ .Values.azureMonitor.integration.history.startingFromInHours }}
