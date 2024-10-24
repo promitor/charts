@@ -69,7 +69,7 @@ data:
           verbosity: {{ .Values.telemetry.containerLogs.logLevel | quote }}
   {{- end }}
         defaultVerbosity: {{ .Values.telemetry.defaultLogLevel | quote  }}
-  {{- if or .Values.azureMonitor.logging.enabled .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk }}
+  {{- if hasKey .Values "azureMonitor" }}
       azureMonitor:
   {{- if .Values.azureMonitor.logging.enabled }}
         logging:
@@ -78,7 +78,7 @@ data:
   {{- end }}
           isEnabled: {{ .Values.azureMonitor.logging.enabled | quote }}
   {{- end }}
-  {{- if or .Values.azureMonitor.logging.enabled .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk}}
+  {{- if hasKey .Values.azureMonitor "integration" }}
         integration:
           {{- if .Values.azureMonitor.integration.metricsBatching.enabled }}
           metricsBatching:
