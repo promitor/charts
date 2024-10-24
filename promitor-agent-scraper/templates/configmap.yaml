@@ -80,7 +80,7 @@ data:
   {{- end }}
   {{- if hasKey .Values.azureMonitor "integration" }}
         integration:
-          {{- if .Values.azureMonitor.integration.metricsBatching.enabled }}
+          {{- if hasKey .Values.azureMonitor.integration "metricsBatching" }}
           metricsBatching:
             enabled: true
             maxBatchSize: {{ .Values.azureMonitor.integration.metricsBatching.maxBatchSize }}
