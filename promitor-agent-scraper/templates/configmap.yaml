@@ -69,7 +69,7 @@ data:
           verbosity: {{ .Values.telemetry.containerLogs.logLevel | quote }}
   {{- end }}
         defaultVerbosity: {{ .Values.telemetry.defaultLogLevel | quote  }}
-  {{- if or .Values.azureMonitor.logging.enabled .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk }}
+  {{- if or .Values.azureMonitor.logging.enabled .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk .Values.azureMonitor.integration.metricsBatching.enabled }}
       azureMonitor:
   {{- if .Values.azureMonitor.logging.enabled }}
         logging:
@@ -78,11 +78,21 @@ data:
   {{- end }}
           isEnabled: {{ .Values.azureMonitor.logging.enabled | quote }}
   {{- end }}
-  {{- if .Values.azureMonitor.integration.history.startingFromInHours }}
+  {{- if or .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk .Values.azureMonitor.integration.metricsBatching.enabled }}
         integration:
-          useAzureMonitorSdk: {{ .Values.azureMonitor.integration.useAzureMonitorSdk | quote}}
+  {{- if .Values.azureMonitor.integration.metricsBatching.enabled }}
+          metricsBatching:
+            enabled: true
+            maxBatchSize: {{ .Values.azureMonitor.integration.metricsBatching.maxBatchSize }}
+            azureRegion: {{ .Values.azureMonitor.integration.metricsBatching.azureRegion }}
+  {{- end }}
+  {{- if .Values.azureMonitor.integration.useAzureMonitorSdk }}
+          useAzureMonitorSdk: {{ .Values.azureMonitor.integration.useAzureMonitorSdk }}
+  {{- end }}
+  {{- if .Values.azureMonitor.integration.history.startingFromInHours }}
           history:
             startingFromInHours: {{ .Values.azureMonitor.integration.history.startingFromInHours }}
+  {{- end }}
   {{- end }}
   {{- end }}
   metrics-declaration.yaml: |-

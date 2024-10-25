@@ -113,6 +113,9 @@ their default values.
 | `azureMonitor.logging.enabled`  | Indication whether or not to provide logs on the integration with Azure Monitor and its APIs | `false`            |
 | `azureMonitor.logging.logLevel`  | Minimum level of logging for Azure Monitor interactions | N/A |
 | `azureMonitor.integration.useAzureMonitorSdk`  | Whether to use the Azure Monitor SDK for scraping; alternative is the legacy Azure Management Library | `true`
+| `azureMonitor.integration.metricsBatching.enabled` | Whether to scrape metrics in batch mode | `false`
+| `azureMonitor.integration.metricsBatching.maxBatchSize` | Max number of resources within a batch | `50`
+| `azureMonitor.integration.metricsBatching.azureRegion` | Azure region of resource targets for batching | 
 | `azureMonitor.integration.history.startingFromInHours`  | Defines the amount of hours Promitor will use to define the starting point of the time window used for metric queries. | N/A            |
 | `rbac.create` | If true, create & use RBAC resources | `true` |
 | `rbac.podSecurityPolicyEnabled` | Create pod security policy resources | `false` |
