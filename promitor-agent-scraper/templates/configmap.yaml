@@ -86,9 +86,13 @@ data:
             maxBatchSize: {{ .Values.azureMonitor.integration.metricsBatching.maxBatchSize }}
             azureRegion: {{ .Values.azureMonitor.integration.metricsBatching.azureRegion }}
           {{- end }}
-          useAzureMonitorSdk: {{ .Values.azureMonitor.integration.useAzureMonitorSdk | quote}}
+          {{- if hasKey .Values.azureMonitor.integration "useAzureMonitorSdk" }}
+          useAzureMonitorSdk: {{ .Values.azureMonitor.integration.useAzureMonitorSdk}}
+          {{- end }}
+          {{- if hasKey .Values.azureMonitor.integration "history" }}
           history:
             startingFromInHours: {{ .Values.azureMonitor.integration.history.startingFromInHours }}
+          {{- end }}
   {{- end }}
   {{- end }}
   metrics-declaration.yaml: |-
