@@ -112,9 +112,9 @@ azureMonitor:
   logging:
     enabled: false
     logLevel:
-  metricsBatching:
-    enabled: false
   integration:
+    metricsBatching:
+      enabled: false
     history:
       startingFromInHours:
 
