@@ -80,7 +80,7 @@ data:
   {{- end }}
   {{- if or .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk .Values.azureMonitor.integration.metricsBatching.enabled }}
         integration:
-  {{- if hasKey .Values.azureMonitor.integration "metricsBatching" }}
+  {{- if .Values.azureMonitor.integration.metricsBatching.enabled }}
           metricsBatching:
             enabled: true
             maxBatchSize: {{ .Values.azureMonitor.integration.metricsBatching.maxBatchSize }}
