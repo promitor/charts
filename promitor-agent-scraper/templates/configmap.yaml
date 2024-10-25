@@ -80,9 +80,19 @@ data:
   {{- end }}
   {{- if or .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk .Values.azureMonitor.integration.metricsBatching.enabled }}
         integration:
-          useAzureMonitorSdk: {{ .Values.azureMonitor.integration.useAzureMonitorSdk | quote}}
+  {{- if hasKey .Values.azureMonitor.integration "metricsBatching" }}
+          metricsBatching:
+            enabled: true
+            maxBatchSize: {{ .Values.azureMonitor.integration.metricsBatching.maxBatchSize }}
+            azureRegion: {{ .Values.azureMonitor.integration.metricsBatching.azureRegion }}
+  {{- end }}
+  {{- if .Values.azureMonitor.integration.useAzureMonitorSdk }}
+          useAzureMonitorSdk: {{ .Values.azureMonitor.integration.useAzureMonitorSdk }}
+  {{- end }}
+  {{- if .Values.azureMonitor.integration.history.startingFromInHours }}
           history:
             startingFromInHours: {{ .Values.azureMonitor.integration.history.startingFromInHours }}
+  {{- end }}
   {{- end }}
   {{- end }}
   metrics-declaration.yaml: |-
