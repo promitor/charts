@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Helm install
-      uses: Azure/setup-helm@v3
+      uses: Azure/setup-helm@v4
 
     - name: Lint Promitor Resource Discovery Helm chart
       run: helm lint promitor-agent-resource-discovery --values examples/promitor-agent-resource-discovery.config.yaml
@@ -50,7 +50,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Helm install
-      uses: Azure/setup-helm@v3
+      uses: Azure/setup-helm@v4
 
     - name: Create k8s ${{ matrix.kubernetesVersion }} Kind Cluster
       uses: helm/kind-action@v1.10.0
