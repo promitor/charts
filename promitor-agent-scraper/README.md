@@ -61,6 +61,7 @@ their default values.
 | `image.tag`  | Tag of image to use | None, chart app version is used by default            |
 | `image.pullPolicy`  | Policy to pull image | `Always`            |
 | `image.pullSecrets`  | ImagePullSecrets for the pod | `[]`            |
+| `concurrency.mutexTimeoutSeconds` | A scrape job's maximum time hold(in seconds) a scraping mutex. | `90`
 | `azureAuthentication.appId`  | [Deprecated] Use `azureAuthentication.identity.id` instead |             |
 | `azureAuthentication.appKey`  | [Deprecated] User `azureAuthentication.identity.key` instead |             |
 | `azureAuthentication.mode`  | Authentication type to use to authenticate. Options are `ServicePrincipal` (default), `UserAssignedManagedIdentity` or `SystemAssignedManagedIdentity` |             |

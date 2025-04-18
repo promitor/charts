@@ -11,6 +11,10 @@ data:
   runtime.yaml: |-
       server:
         httpPort: {{ .Values.service.targetPort | quote }}
+  {{- if .Values.concurrency.mutexTimeoutSeconds }}
+      concurrency:
+        mutexTimeoutSeconds: {{ .Values.concurrency.mutexTimeoutSeconds }}
+  {{- end }}
       authentication:
         mode: {{ .Values.azureAuthentication.mode | default "ServicePrincipal"}}
   {{- if .Values.azureAuthentication.identity.id }}
