@@ -20,6 +20,8 @@ azureAuthentication:
     id: ""
     key: ""
     binding: ""
+concurrency:
+  mutexTimeoutSeconds: 90
 metricSinks:
   atlassianStatuspage:
     enabled: false

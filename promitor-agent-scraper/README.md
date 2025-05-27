@@ -67,6 +67,7 @@ their default values.
 | `azureAuthentication.identity.id`  | Id of the Azure AD entity to authenticate with |             |
 | `azureAuthentication.identity.key`  | Secret of the Azure AD entity to authenticate with |             |
 | `azureAuthentication.identity.binding`  | Aad Pod Identity name, when using `UserAssignedManagedIdentity` or `SystemAssignedManagedIdentity` as mode |             |
+| `concurrency.mutexTimeoutSeconds` | A scrape job's maximum time hold(in seconds) a scraping mutex. | `90`            |
 | `resourceDiscovery.enabled`  | Indication whether or not resource discovery is required | `false`            |
 | `resourceDiscovery.host`  | DNS name or IP address of the Promitor Resource Discovery agent |             |
 | `resourceDiscovery.port`  | Port (UDP) address of the Promitor Resource Discovery agent | `80`            |
