@@ -49,5 +49,11 @@ data:
 {{ tpl $subscriptions . | indent 6 }}
   {{- end }}
       cloud: {{ .Values.azureLandscape.cloud }}
+  {{- if .Values.azureLandscape.endpoints }}
+      endpoints:
+    {{- range $key, $value := .Values.azureLandscape.endpoints }}
+        {{ $key }}: {{ $value }}
+    {{- end }}
+  {{- end }}  
     resourceDiscoveryGroups:
 {{ tpl $resourceDiscoveryGroups . | indent 4 }}
