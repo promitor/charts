@@ -57,7 +57,7 @@ data:
 {{ tpl $systemMetricMapping . | indent 10 }}
   {{- end }}
       metricsConfiguration:
-        absolutePath: {{ .Values.metricsConfiguration.absolutePath | default "/config/metrics-declaration.yaml" | quote}}
+        absolutePath: {{ .Values.metricsConfiguration.absolutePath | default "/config/metrics-declaration.yaml" }}
       telemetry:
         applicationInsights:
   {{- if .Values.telemetry.applicationInsights.key }}
