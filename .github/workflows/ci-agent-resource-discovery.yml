@@ -31,18 +31,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        kubernetesVersion: [v1.27, v1.26, v1.25, v1.24]
+        kubernetesVersion: [v1.34, v1.33, v1.32, v1.31]
         include:
           # Images are defined on every Kind release
-          # See https://github.com/kubernetes-sigs/kind/releases
-        - kubernetesVersion: v1.27
-          kindImage: kindest/node:v1.27.3@sha256:3966ac761ae0136263ffdb6cfd4db23ef8a83cba8a463690e98317add2c9ba72
-        - kubernetesVersion: v1.26
-          kindImage: kindest/node:v1.26.6@sha256:6e2d8b28a5b601defe327b98bd1c2d1930b49e5d8c512e1895099e4504007adb
-        - kubernetesVersion: v1.25
-          kindImage: kindest/node:v1.25.11@sha256:227fa11ce74ea76a0474eeefb84cb75d8dad1b08638371ecf0e86259b35be0c8
-        - kubernetesVersion: v1.24
-          kindImage: kindest/node:v1.24.15@sha256:7db4f8bea3e14b82d12e044e25e34bd53754b7f2b0e9d56df21774e6f66a70ab
+          # See https://github.com/kubernetes-sigs/kind/releases for an overview of the images
+        - kubernetesVersion: v1.34
+          kindImage: kindest/node:v1.34.0@sha256:7416a61b42b1662ca6ca89f02028ac133a309a2a30ba309614e8ec94d976dc5a
+        - kubernetesVersion: v1.33
+          kindImage: kindest/node:v1.33.4@sha256:25a6018e48dfcaee478f4a59af81157a437f15e6e140bf103f85a2e7cd0cbbf2
+        - kubernetesVersion: v1.32
+          kindImage: kindest/node:v1.32.8@sha256:abd489f042d2b644e2d033f5c2d900bc707798d075e8186cb65e3f1367a9d5a1
+        - kubernetesVersion: v1.31
+          kindImage: kindest/node:v1.31.12@sha256:0f5cc49c5e73c0c2bb6e2df56e7df189240d83cf94edfa30946482eb08ec57d2
     env:
       kubernetes_namespace: promitor
     steps:
