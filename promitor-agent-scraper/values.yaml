@@ -55,8 +55,8 @@ metricSinks:
     metricPrefix: ""
 
 metricsConfiguration:
-  absoluthePath: ""
-  
+  absolutePath: ""
+
 prometheusRule:
   enabled: false
   namespace: ""
