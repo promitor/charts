@@ -95,6 +95,11 @@ spec:
           - name: tmp
             mountPath: /tmp/
           {{- end }}
+          {{- if .Values.airgap}}
+          - name: cacrt-host
+            mountPath: {{ .Values.cacrtPath }}
+            readOnly: true
+          {{- end }}
           {{- if .Values.extraVolumeMounts }}
 {{ toYaml .Values.extraVolumeMounts | indent 10 }}
           {{- end }}
@@ -133,6 +138,12 @@ spec:
         {{- if and .Values.containerSecurityContext.enabled .Values.containerSecurityContext.readOnlyRootFilesystem }}
         - emptyDir: { }
           name: tmp
+        {{- end }}
+        {{- if .Values.airgap }}
+        - name: cacrt-host
+          hostPath:
+            type: File
+            path: {{ .Values.cacrtPath }}
         {{- end }}
         {{- if .Values.extraVolumes }}
 {{ toYaml .Values.extraVolumes | indent 8 }}

@@ -106,6 +106,12 @@ data:
       subscriptionId: {{ .Values.azureMetadata.subscriptionId }}
       resourceGroupName: {{ .Values.azureMetadata.resourceGroupName }}
       cloud: {{ .Values.azureMetadata.cloud }}
+  {{- if .Values.azureMetadata.endpoints }}
+      endpoints:
+    {{- range $key, $value := .Values.azureMetadata.endpoints }}
+        {{ $key }}: {{ $value }}
+    {{- end }}
+  {{- end }}
     metricDefaults:
       aggregation:
         interval: {{ .Values.metricDefaults.aggregation.interval }}
