@@ -3,6 +3,11 @@
 
 replicaCount: 1
 
+# Flag to enable airgap deployment mode
+airgap: false
+# Path for CA certificates in Mariner OS
+cacrtPath: "/etc/pki/tls/certs"
+
 nameOverride: ""
 fullnameOverride: ""
 
@@ -52,6 +57,10 @@ azureLandscape:
   subscriptions: []
   # This field is deprecated, use subscriptions instead please
   subscriptionIds: []
+  # endpoints:
+  #   resourceManager: https://management.azure.com/
+  #   activeDirectory: https://login.microsoftonline.com/
+  #   # Add any additional custom endpoints as needed
 
 resourceDiscoveryGroups: []
 # Sample resource discovery group configuration below

@@ -57,6 +57,8 @@ their default values.
 
 | Parameter                  | Description              | Default              |
 |:---------------------------|:-------------------------|:---------------------|
+| `airgap`  | Flag to enable airgap deployment mode | `false` |
+| `cacrtPath`  | Path for CA certificates in Mariner OS | `/etc/pki/tls/certs` |
 | `image.repository`  | Repository which provides the image | `containers.promitor.io/tomkerkhove/promitor-agent-resource-discovery` |
 | `image.tag`  | Tag of image to use | None, chart app version is used by default            |
 | `image.pullPolicy`  | Policy to pull image | `Always`            |
@@ -64,6 +66,7 @@ their default values.
 | `azureLandscape.cloud`  | Azure Cloud to discover resources in. Options are `Global` (default), `China`, `UsGov` & `Germany` | `Global`            |
 | `azureLandscape.tenantId`  | Id of Azure tenant to discover resources in |             |
 | `azureLandscape.subscriptions`  | List of Azure subscription ids to discover resources in | `[]`            |
+| `azureLandscape.endpoints`  | Custom Azure ARM endpoints to use. Can contain `resourceManager` and `activeDirectory` keys with corresponding endpoint URLs | `{}`            |
 | `resourceDiscoveryGroups`  | List of resource discovery groups to configured following the [resource discovery declaration docs](https://promitor.io/configuration/v2.x/resource-discovery) |        |
 | `azureAuthentication.appId`  | [Deprecated] Use `azureAuthentication.identity.id` instead |             |
 | `azureAuthentication.appKey`  | [Deprecated] Use `azureAuthentication.identity.key` instead |             |

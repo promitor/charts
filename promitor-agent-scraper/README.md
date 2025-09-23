@@ -57,6 +57,8 @@ their default values.
 
 | Parameter                  | Description              | Default              |
 |:---------------------------|:-------------------------|:---------------------|
+| `airgap`  | Flag to enable airgap deployment mode | `false` |
+| `cacrtHostPath`  | Path for CA certificates in Mariner OS | `/etc/pki/tls/certs` |
 | `image.repository`  | Repository which provides the image | `containers.promitor.io/tomkerkhove/promitor-agent-scraper` |
 | `image.tag`  | Tag of image to use | None, chart app version is used by default            |
 | `image.pullPolicy`  | Policy to pull image | `Always`            |
@@ -108,6 +110,7 @@ their default values.
 | `azureMetadata.subscriptionId`  | Id of Azure subscription |             |
 | `azureMetadata.resourceGroupName`  | Name of resource group | `promitor`            |
 | `azureMetadata.cloud`  | Azure Cloud to authenticated and scraping metrics from. Options are Global (default), China, UsGov & Germany | `Global`            |
+| `azureMetadata.endpoints`  | Custom Azure ARM endpoints to use. Can contain `resourceManager` and `activeDirectory` keys with corresponding endpoint URLs | `{}`            |
 | `metricDefaults.aggregation.interval`  | Default interval which defines over what period measurements of a metric should be aggregated | `00:05:00`            |
 | `metricDefaults.scraping.schedule`  | Cron expression that controls the fequency in which all the configured metrics will be scraped from Azure Monitor | `*/5 * * * *`            |
 | `metrics`  | List of metrics to scrape configured following the [metric declaration docs](https://promitor.io/configuration/metrics/) |        |

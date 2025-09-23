@@ -3,6 +3,11 @@
 
 replicaCount: 1
 
+# Flag to enable airgap deployment mode
+airgap: false
+# Path for CA certificates in Mariner OS
+cacrtHostPath: "/etc/pki/tls/certs"
+
 nameOverride: ""
 fullnameOverride: ""
 
@@ -91,6 +96,10 @@ azureMetadata:
   subscriptionId: ""
   resourceGroupName: promitor
   cloud: "Global"
+  # endpoints:
+  #   resourceManager: https://management.azure.com/
+  #   activeDirectory: https://login.microsoftonline.com/
+  #   # Add any additional custom endpoints as needed
 metricDefaults:
   aggregation:
     interval: 00:05:00
