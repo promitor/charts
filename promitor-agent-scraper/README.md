@@ -93,6 +93,7 @@ their default values.
 | `metricSinks.statsd.host`  | DNS name or IP address of StatsD server |             |
 | `metricSinks.statsd.port`  | Port (UDP) address of StatsD server | `8125`            |
 | `metricSinks.statsd.metricPrefix`  | Prefix that will be added to every metric defined in the metric declaration |             |
+| `metricsConfiguration.absolutePath`  | Absolute path for the metrics configuration file (metrics-declaration.yaml) |  `/config/metrics-declaration.yaml`           |
 | `prometheusRule.enabled`          | Indication whether or not to create PrometheusRule object(s) for [Prometheus operator](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions)      | `false`                     |
 | `prometheusRule.additionalLabels` | Additional labels that can be used so prometheusRules will be discovered by Prometheus  | `{}`        |
 | `prometheusRule.interval` | Interval determines how often rules in the group are evaluated ([docs](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.RuleGroup)) | `` |
