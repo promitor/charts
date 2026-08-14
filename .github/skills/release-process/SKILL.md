@@ -15,7 +15,7 @@ Follow these steps for every chart being released:
 4. Move the generated `.tgz` archive into `docs/`.
 5. Regenerate the repository index with `helm repo index docs --url https://charts.promitor.io`.
 6. Verify that `docs/index.yaml` contains the new release and preserves previous releases.
-7. Create a pull request containing the chart metadata, packaged archive, and regenerated index.
+7. Create a pull request containing the chart metadata, packaged archive, and regenerated index. Use a semantic pull request title such as `feat: update appVersion to <version> for <chart>`.
 8. After the pull request is merged, create a GitHub release using the template in `CONTRIBUTING.md`.
 
 Never edit `docs/index.yaml` manually. Do not replace or remove existing packaged chart releases.
