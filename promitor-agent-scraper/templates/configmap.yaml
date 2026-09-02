@@ -22,6 +22,10 @@ data:
   {{- else if .Values.azureAuthentication.appId }}
         identityId: {{ .Values.azureAuthentication.appId}}
   {{- end }}
+  {{- if .Values.azureAuthentication.identity.appKeySecretFilePath }}
+        appKeySecretFilePath: {{ .Values.azureAuthentication.identity.appKeySecretFilePath}}
+        appKeySecretName: {{ .Values.azureAuthentication.identity.appKeySecretName}}
+  {{- end }}
   {{- if .Values.resourceDiscovery.enabled }}
       resourceDiscovery:
         host: {{ .Values.resourceDiscovery.host | quote }}
@@ -33,6 +37,11 @@ data:
           host: {{ .Values.metricSinks.statsd.host | quote }}
   {{- if .Values.metricSinks.statsd.port }}
           port: {{ .Values.metricSinks.statsd.port | quote }}
+  {{- end }}
+   {{- if eq .Values.metricSinks.statsd.formattertype "custom" }}
+          account: {{ .Values.metricSinks.statsd.account | quote }}
+          namespace: {{ .Values.metricSinks.statsd.namespace | quote }}
+          formattertype: {{ .Values.metricSinks.statsd.formattertype | quote }}
   {{- end }}
   {{- if .Values.metricSinks.statsd.metricPrefix }}
           metricPrefix: {{ .Values.metricSinks.statsd.metricPrefix | quote }}

@@ -19,6 +19,8 @@ azureAuthentication:
   identity:
     id: ""
     key: ""
+    appKeySecretFilePath: "" # The path to the secret file
+    appKeySecretFileName: "" # The file that contains the secret value
     binding: ""
 concurrency:
   mutexTimeoutSeconds: 90
@@ -53,6 +55,9 @@ metricSinks:
     host: ""
     port: 8125
     metricPrefix: ""
+    namespace: "" # Custom field when using custom formatter type
+    account: "" # Custom field when using custom formatter type
+    formattertype: "default" # Can be set to default or custom
 prometheusRule:
   enabled: false
   namespace: ""
