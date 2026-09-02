@@ -11,6 +11,11 @@ data:
   runtime.yaml: |-
       server:
         httpPort: {{ .Values.service.targetPort | quote }}
+  {{- with .Values.server }}
+  {{- if .maxDegreeOfParallelism }}
+        maxDegreeOfParallelism: {{ .maxDegreeOfParallelism }}
+  {{- end }}
+  {{- end }}
   {{- if .Values.concurrency.mutexTimeoutSeconds }}
       concurrency:
         mutexTimeoutSeconds: {{ .Values.concurrency.mutexTimeoutSeconds }}
@@ -73,7 +78,7 @@ data:
           verbosity: {{ .Values.telemetry.containerLogs.logLevel | quote }}
   {{- end }}
         defaultVerbosity: {{ .Values.telemetry.defaultLogLevel | quote  }}
-  {{- if or .Values.azureMonitor.logging.enabled .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk .Values.azureMonitor.integration.metricsBatching.enabled }}
+  {{- if or .Values.azureMonitor.logging.enabled .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.history.startingFromOffset .Values.azureMonitor.integration.useAzureMonitorSdk .Values.azureMonitor.integration.metricsBatching.enabled }}
       azureMonitor:
   {{- if .Values.azureMonitor.logging.enabled }}
         logging:
@@ -82,7 +87,7 @@ data:
   {{- end }}
           isEnabled: {{ .Values.azureMonitor.logging.enabled | quote }}
   {{- end }}
-  {{- if or .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.useAzureMonitorSdk .Values.azureMonitor.integration.metricsBatching.enabled }}
+  {{- if or .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.history.startingFromOffset .Values.azureMonitor.integration.useAzureMonitorSdk .Values.azureMonitor.integration.metricsBatching.enabled }}
         integration:
   {{- if .Values.azureMonitor.integration.metricsBatching.enabled }}
           metricsBatching:
@@ -93,9 +98,14 @@ data:
   {{- if .Values.azureMonitor.integration.useAzureMonitorSdk }}
           useAzureMonitorSdk: {{ .Values.azureMonitor.integration.useAzureMonitorSdk }}
   {{- end }}
-  {{- if .Values.azureMonitor.integration.history.startingFromInHours }}
+  {{- if or .Values.azureMonitor.integration.history.startingFromInHours .Values.azureMonitor.integration.history.startingFromOffset }}
           history:
+  {{- if .Values.azureMonitor.integration.history.startingFromInHours }}
             startingFromInHours: {{ .Values.azureMonitor.integration.history.startingFromInHours }}
+  {{- end }}
+  {{- if .Values.azureMonitor.integration.history.startingFromOffset }}
+            startingFromOffset: {{ .Values.azureMonitor.integration.history.startingFromOffset }}
+  {{- end }}
   {{- end }}
   {{- end }}
   {{- end }}

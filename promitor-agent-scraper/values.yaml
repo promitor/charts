@@ -20,6 +20,7 @@ azureAuthentication:
     id: ""
     key: ""
     binding: ""
+
 concurrency:
   mutexTimeoutSeconds: 90
 metricSinks:
@@ -119,6 +120,7 @@ azureMonitor:
       enabled: false
     history:
       startingFromInHours:
+      startingFromOffset: 00:00:00
 
 deployment:
   env:
