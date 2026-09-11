@@ -67,7 +67,7 @@ spec:
         {{- toYaml .Values.tolerations | nindent 6 }}
       {{- end }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ template "promitor-agent-scraper.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
